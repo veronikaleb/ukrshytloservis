@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    background-color: #F0F8FF;
+    font-family: "Poppins", sans-serif;
+    color: #224C98;
+  }
+
+  .content-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .service-header {
+    text-align: center;
+    padding: 40px 10px 20px;
+    background: linear-gradient(to right, #3E8EDE, #00BFFF);
+    color: white;
+    border-radius: 0 0 30px 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .service-header h1 {
+    margin: 0;
+    font-size: 36px;
+  }
+
+  .service-description {
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+    padding: 25px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    margin-top: 30px;
+  }
+
+  .service-description p {
+    margin-bottom: 15px;
+  }
+
+  .image-section {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .image-gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 15px;
+  }
+
+  .image-gallery img {
+    width: calc(33.33% - 20px);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .image-gallery img:hover {
+    transform: scale(1.05);
+  }
+
+  @media screen and (max-width: 768px) {
+    .image-gallery img {
+      width: calc(50% - 10px);
+    }
+
+    .service-header h1 {
+      font-size: 28px;
+    }
+
+    .service-description {
+      font-size: 16px;
+      padding: 15px;
+    }
+  }

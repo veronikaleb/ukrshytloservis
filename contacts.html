@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вітаємо</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/jquery-3.3.1.min.js"></script>
+    <script src="JS/jquery-ui.min.js"></script>
+    <script src="JS/mylibs1.js"></script>
+    <script type="module" src="JS/feedback.js"></script>
+    <script type="module" src="JS/firebase.js"></script>
+</head>
+<body>
+ <nav class="top-menu">
+  <a class="navbar-logo" href="index.html"><img src="images/logo_3.png"></a>
+  <button class="menu-toggle" id="menuToggle">&#9776;</button>
+  <ul class="menu-main" id="menu">
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="homes.html">Комплекси</a></li>
+    <li><a href="information.html">Про нас</a></li>
+    <li><a href="services.html">Послуги</a></li>
+    <li><a href="price.html">Ціни</a></li>
+    <li><a href="news.html">Новини</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+  </ul>
+</nav>
+	<section class="main fade-in">
+        <div class="name_other">
+		<h1>Контакти</h1>
+	</div>
+	<div class="block2">
+        <h2>Контактна інформація</h2>
+        <div class="contact-item">
+            <i class="fa fa-home" aria-hidden="true"></i> Київська обл., м. Буча, вул. Амосова 4, кв. 1
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-phone" aria-hidden="true"></i> (098) 488-20-40
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-phone" aria-hidden="true"></i> (063) 488-20-40
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> Пн-Пт: 8:00-16:00
+        </div>
+        <div class="contact-item">
+            <i class="fa fa-envelope-o" aria-hidden="true"></i> <a href="mailto:ykrzhitloservis@gmail.com">ykrzhitloservis@gmail.com</a>
+        </div>
+        <div class="main-content">
+            <div class="con" align="center">
+                <div id="block1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2409.7074358184655!2d30.1923964764098!3d50.55008717161133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b31b227c5719f%3A0xf9b19eecadb5f2a9!2z0JbQmiDQmtC40ZfQstGB0YzQutC40Lk!5e1!3m2!1sru!2sua!4v1746113893603!5m2!1sru!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div> 
+          <h1>Залиште відгук</h1>
+  
+  <form id="feedbackForm">
+  <input type="text" id="name" placeholder="Ваше ім'я" required />
+  <input type="email" id="email" placeholder="Ваш Email" required />
+  <textarea id="message" placeholder="Ваше повідомлення" rows="5" required></textarea>
+  <button type="submit" id="submitBtn">Відправити</button>
+  <div id="loadingSpinner" style="display:none;">⏳ Надсилання...</div>
+</form>
+<div id="response"></div>
+
+
+  <div id="response"></div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Імпортуємо Firebase SDK модулі
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+
+    // Конфігурація Firebase — заміни на свої дані з Firebase Console
+ const firebaseConfig = {
+  apiKey: "AIzaSyCspFFtNGfS9wLghKLAu4ORMsJ1MH_YNCo",
+  authDomain: "ukr-zhytlo-web.firebaseapp.com",
+  projectId: "ukr-zhytlo-web",
+  storageBucket: "ukr-zhytlo-web.firebasestorage.app",
+  messagingSenderId: "351755151802",
+  appId: "1:351755151802:web:1b317066b5f82111b49583",
+  measurementId: "G-QX479THV6S"
+};
+
+    // Ініціалізація Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const form = document.getElementById('feedbackForm');
+    const responseDiv = document.getElementById('response');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        responseDiv.textContent = "Будь ласка, заповніть всі поля!";
+        return;
+      }
+
+      try {
+        await addDoc(collection(db, 'feedback'), {
+          name,
+          email,
+          message,
+          createdAt: serverTimestamp()
+        });
+
+        responseDiv.style.color = 'green';
+        responseDiv.textContent = "Дякуємо за ваш відгук!";
+        form.reset();
+      } catch (error) {
+        responseDiv.style.color = 'red';
+        responseDiv.textContent = "Помилка при відправці: " + error.message;
+      }
+    });
+  </script>  
+    </section>
+    <footer class="footer">
+        <div class="row">
+            <div class="column-right">
+                <p>Укр Житло Сервіс © 2016-2025</p>
+            </div>
+            <div class="column-center">
+                <p>
+                    <i class="fa fa-home" aria-hidden="true"></i> Київська обл., м. Буча, вул. Амосова 4, кв. 1<br>
+                    <i class="fa fa-phone" aria-hidden="true"></i> (098) 488-20-40<br>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Пн-Пт: 8:00-16:00<br>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ykrzhitloservis@gmail.com
+                </p>
+            </div>
+            <div class="column-left">
+                <p><b>Про нас</b><br>
+                    Компанія «Укр Житло Сервіс» – команда професіоналів з багаторічним досвідом у проектуванні, монтажу, 
+                    ремонту та обслуговуванні інженерних мереж та будинків</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           Розробник: Вероніка Лебедовська
+        </div>
+</body>
+</html>

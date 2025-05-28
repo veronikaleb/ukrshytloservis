@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Вітаємо</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="JS/jquery-3.3.1.min.js"></script>
+    <script src="JS/jquery-ui.min.js"></script>
+    <script src="JS/mylibs1.js"></script>
+</head>
+<body>
+<nav class="top-menu">
+  <a class="navbar-logo" href="index.html"><img src="images/logo_3.png"></a>
+  <button class="menu-toggle" id="menuToggle">&#9776;</button>
+  <ul class="menu-main" id="menu">
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="homes.html">Комплекси</a></li>
+    <li><a href="information.html">Про нас</a></li>
+    <li><a href="services.html">Послуги</a></li>
+    <li><a href="price.html">Ціни</a></li>
+    <li><a href="news.html">Новини</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+  </ul>
+</nav>
+	<section class="main fade-in visible">
+		<div class="name_other">
+			<h1>Послуги</h1>
+		</div>
+		<div class="category-wrap">
+		<h3>Категорії</h3>
+		  <ul>
+			<li onclick="toggleFrame('frame1')"><a href="#">Сантехніка</a></li>
+			<li onclick="toggleFrame('frame2')"><a href="#">Електрика</a></li>
+			<li onclick="toggleFrame('frame3')"><a href="#">Клінінг</a></li>
+			<li onclick="toggleFrame('frame4')"><a href="#">Садівництво</a></li>
+			<li onclick="toggleFrame('frame5')"><a href="#">Аварійні виклики</a></li>
+		  </ul>
+		</div>
+		<div class="iframe-container" id="frame1" style="width: 100%; height: 100vh;">
+		  <iframe src="plumber.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+		<div class="iframe-container" id="frame2" style="width: 100%; height: 100vh;">
+		  <iframe src="electrician.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+		<div class="iframe-container" id="frame3" style="width: 100%; height: 100vh;">
+		  <iframe src="cleaning.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+		<div class="iframe-container" id="frame4" style="width: 100%; height: 100vh;">
+		  <iframe src="garden.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+		<div class="iframe-container" id="frame5" style="width: 100%; height: 100vh;">
+		  <iframe src="emergency.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+		</div>
+	</section>
+  <footer class="footer">
+    <div class="row">
+        <div class="column-right">
+            <p>Укр Житло Сервіс © 2016-2025</p>
+        </div>
+        <div class="column-center">
+            <p>
+                <i class="fa fa-home" aria-hidden="true"></i> Київська обл., м. Буча, вул. Амосова 4, кв. 1<br>
+                <i class="fa fa-phone" aria-hidden="true"></i> (098) 488-20-40<br>
+                <i class="fa fa-clock-o" aria-hidden="true"></i> Пн-Пт: 8:00-16:00<br>
+                <i class="fa fa-envelope-o" aria-hidden="true"></i> ykrzhitloservis@gmail.com
+            </p>
+        </div>
+        <div class="column-left">
+            <p><b>Про нас</b><br>
+                Компанія «Укр Житло Сервіс» – команда професіоналів з багаторічним досвідом у проектуванні, монтажу, 
+                ремонту та обслуговуванні інженерних мереж та будинків</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+       Розробник: Вероніка Лебедовська
+    </div>
+<script>
+    function toggleFrame(frameId) {
+    var selectedFrame = document.getElementById(frameId);
+    var frames = document.querySelectorAll('.iframe-container');
+
+    frames.forEach(frame => {
+      if (frame.id !== frameId) {
+        frame.style.display = 'none'; // ховаємо всі фрейми, крім обраного
+      }
+    });
+
+    if (selectedFrame.style.display === 'block') {
+      selectedFrame.style.display = 'none'; // приховуємо фрейм, якщо він вже відображений
+    } else {
+      selectedFrame.style.display = 'block'; // показуємо обраний фрейм
+    }
+  }
+</script>
+</body>
+</html>

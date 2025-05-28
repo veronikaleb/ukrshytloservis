@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Вітаємо</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="JS/jquery-3.3.1.min.js"></script>
+		<script src="JS/jquery-ui.min.js"></script>
+		<script src="JS/mylibs1.js"></script>
+	</head>
+	<script>
+		 class ItcAccordion {
+      constructor(target, config) {
+        this._el = typeof target === 'string' ? document.querySelector(target) : target;
+        const defaultConfig = {
+          alwaysOpen: true,
+          duration: 350
+        };
+        this._config = Object.assign(defaultConfig, config);
+        this.addEventListener();
+      }
+      addEventListener() {
+        this._el.addEventListener('click', (e) => {
+          const elHeader = e.target.closest('.accordion__header');
+          if (!elHeader) {
+            return;
+          }
+          if (!this._config.alwaysOpen) {
+            const elOpenItem = this._el.querySelector('.accordion__item_show');
+            if (elOpenItem) {
+              elOpenItem !== elHeader.parentElement ? this.toggle(elOpenItem) : null;
+            }
+          }
+          this.toggle(elHeader.parentElement);
+        });
+      }
+      show(el) {
+        const elBody = el.querySelector('.accordion__body');
+        if (elBody.classList.contains('collapsing') || el.classList.contains('accordion__item_show')) {
+          return;
+        }
+        elBody.style['display'] = 'block';
+        const height = elBody.offsetHeight;
+        elBody.style['height'] = 0;
+        elBody.style['overflow'] = 'hidden';
+        elBody.style['transition'] = `height ${this._config.duration}ms ease`;
+        elBody.classList.add('collapsing');
+        el.classList.add('accordion__item_slidedown');
+        elBody.offsetHeight;
+        elBody.style['height'] = `${height}px`;
+        window.setTimeout(() => {
+          elBody.classList.remove('collapsing');
+          el.classList.remove('accordion__item_slidedown');
+          elBody.classList.add('collapse');
+          el.classList.add('accordion__item_show');
+          elBody.style['display'] = '';
+          elBody.style['height'] = '';
+          elBody.style['transition'] = '';
+          elBody.style['overflow'] = '';
+        }, this._config.duration);
+      }
+      hide(el) {
+        const elBody = el.querySelector('.accordion__body');
+        if (elBody.classList.contains('collapsing') || !el.classList.contains('accordion__item_show')) {
+          return;
+        }
+        elBody.style['height'] = `${elBody.offsetHeight}px`;
+        elBody.offsetHeight;
+        elBody.style['display'] = 'block';
+        elBody.style['height'] = 0;
+        elBody.style['overflow'] = 'hidden';
+        elBody.style['transition'] = `height ${this._config.duration}ms ease`;
+        elBody.classList.remove('collapse');
+        el.classList.remove('accordion__item_show');
+        elBody.classList.add('collapsing');
+        window.setTimeout(() => {
+          elBody.classList.remove('collapsing');
+          elBody.classList.add('collapse');
+          elBody.style['display'] = '';
+          elBody.style['height'] = '';
+          elBody.style['transition'] = '';
+          elBody.style['overflow'] = '';
+        }, this._config.duration);
+      }
+      toggle(el) {
+        el.classList.contains('accordion__item_show') ? this.hide(el) : this.show(el);
+      }
+    }
+	</script>
+<body>
+    <nav class="top-menu">
+  <a class="navbar-logo" href="index.html"><img src="images/logo_3.png"></a>
+  <button class="menu-toggle" id="menuToggle">&#9776;</button>
+  <ul class="menu-main" id="menu">
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="homes.html">Комплекси</a></li>
+    <li><a href="information.html">Про нас</a></li>
+    <li><a href="services.html">Послуги</a></li>
+    <li><a href="price.html">Ціни</a></li>
+    <li><a href="news.html">Новини</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+  </ul>
+</nav>
+	<section class="main homes_page fade-in">
+	<div class="name_other">
+		<h1>Обслуговування будинків</h1>
+	</div>
+		<div id="accordion" class="accordion" style="max-width: 30rem; margin: 1rem auto;">
+    <div class="accordion__item">
+      <div class="accordion__header">
+        Буча
+      </div>
+      <div class="accordion__body">
+        <div class="accordion__content">
+		<ul>
+            <li>&#127968 ОСББ "Новатор"</li><br>
+            <li>&#127968 ОСББ "Буча Квартал"</li><br>
+            <li>&#127968 ОСББ "Буча Квартал 2"</li><br>
+            <li>&#127968 ОСББ "Нова Буча"</li><br>
+            <li>&#127968 ОСББ "Річ Таун"</li><br>
+            <li>&#127968 ОСББ "Річ Таун 2"</li><br>
+            <li>&#127968 ОСББ "Київський"</li><br>
+            <li>&#127968 ОСББ "Садовий"</li><br>
+            <li>&#127968 ОСББ "Пурпурові вітрила"</li><br>
+            <li>&#127968 ОСББ "Нове Шосе 16"</li><br>
+            <li>&#127968 ОСББ "Богдана Хмельницького 6"</li><br>
+            <li>&#127968 ТОВ «Буча Комфорт Сервіс» </li><br>
+            <li>&#127968 ОСББ "Міленіум Сіті"</li><br>
+            <li>&#127968 ОСББ «Буча Центральний»</li><br>
+            <li>&#127968 ОСББ «Тарасівський»</li><br>
+            <li>&#127968 ЖК «Нова Сервісна Компанія» </li><br>
+            <li>&#127968 УК «Континент Буча Сервіс»</li><br>
+            <li>&#127968 ОСББ «Наш Комфорт 16»</li><br>
+		</ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion__item">
+      <div class="accordion__header">
+        Ірпінь
+      </div>
+      <div class="accordion__body">
+        <div class="accordion__content">
+          <ul>
+              <li>&#127968 ЖК "Новатор Ірпінь"</li><br>
+              <li>&#127968 ЖК "Барвіха"</li><br>
+              <li>&#127968 ЖК "Смайл"</li><br>
+              <li>&#127968 ОСББ «Грінлайф на Мечнікова»</li><br>
+              <li>&#127968 ОСББ «Гранд Лайф №5»</li><br>
+              <li>&#127968 ОСББ «Авангард на Лісовій»</li><br>
+              <li>&#127968 ОСББ «Річ Таун Західна 8»</li><br>
+              <li>&#127968 ОСББ «Річ Таун Західна-4»</li><br>
+              <li>&#127968 ОСББ «Комфорт хаус»</li><br>
+              <li>&#127968 ОСББ «Затишна Домівка»</li><br>
+              <li>&#127968 ОСББ «Лисенка 14 Г»</li><br>
+              <li>&#127968 ОСББ «Нові Метри Контраст» </li><br>
+              <li>&#127968 ОСББ «Лісовик-IP» </li><br>
+              <li>&#127968 ОСББ «Титан 2020»  </li><br>
+              <li>&#127968 ОСББ «Нові метри парк»</li><br>
+              <li>&#127968 ОСББ «НМ Контраст»</li><br>
+              <li>&#127968 ОСББ «Лемонграс» </li><br>
+              <li>&#127968 ОСББ «Гранд лайф №1»</li><br>
+              <li>&#127968 ОСББ «Нові Метри Центр»</li><br>
+              <li>&#127968  ОСББ «Нові Метри Клаб»</li><br>
+              <li>&#127968 ОСББ «Квартал Чехова»</li><br>
+              <li>&#127968 ОСББ «ФОРЕСТХАУЗ»</li><br>
+	    	</ul>
+        </div>
+      </div>
+    </div>
+    <div class="accordion__item">
+      <div class="accordion__header">
+        Гостомель
+      </div>
+      <div class="accordion__body">
+        <div class="accordion__content">
+			<ul>
+         <li>&#127968 ОСББ «ЖК «Бучанський»</li><br>
+         <li>&#127968 ОСББ «Прорізна Гостомель»</li><br>
+		  </ul>
+        </div>
+      </div>
+    </div>
+	    <div class="accordion__item">
+      <div class="accordion__header">
+        Ворзель
+      </div>
+      <div class="accordion__body">
+        <div class="accordion__content">
+          <ul>
+            <li>&#127968 ОСББ «Ворзель Парк 2»</li><br>
+            <li>&#127968 ОСББ «Гранд Резорд» </li><br>
+        </ul>
+        </div>
+      </div>
+    </div>
+	    <div class="accordion__item">
+      <div class="accordion__header">
+        Немішаєво
+      </div>
+      <div class="accordion__body">
+        <div class="accordion__content">
+        <ul>
+          <li>&#127968 ОСББ «ЖК Світлиця»</li><br>
+        </ul>
+        </div>   
+    </div>
+  </div>
+  <section class="service-section">
+    <div class="service-container">
+        <h2>Обслуговування будинків</h2>
+        <p>Наша компанія пропонує комплексне технічне обслуговування житлових та комерційних будівель.  
+        Ми гарантуємо якісний догляд за інженерними мережами, ремонтні роботи та підтримку комфортних умов для мешканців.</p>
+        
+        <div class="service-list">
+            <div class="service-item">
+                <h3>Технічне обслуговування</h3>
+                <p>Регулярна перевірка та ремонт електромереж, систем водопостачання та опалення.</p>
+            </div>
+            <div class="service-item">
+                <h3>Прибирання та благоустрій</h3>
+                <p>Прибирання прибудинкової території, догляд за зеленими насадженнями та вивіз сміття.</p>
+            </div>
+            <div class="service-item">
+                <h3>Охорона та контроль доступу</h3>
+                <p>Системи відеоспостереження, домофони та організація роботи охорони.</p>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+<footer class="footer">
+  <div class="row">
+      <div class="column-right">
+          <p>Укр Житло Сервіс © 2016-2025</p>
+      </div>
+      <div class="column-center">
+          <p>
+              <i class="fa fa-home" aria-hidden="true"></i> Київська обл., м. Буча, вул. Амосова 4, кв. 1<br>
+              <i class="fa fa-phone" aria-hidden="true"></i> (098) 488-20-40<br>
+              <i class="fa fa-clock-o" aria-hidden="true"></i> Пн-Пт: 8:00-16:00<br>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i> ykrzhitloservis@gmail.com
+          </p>
+      </div>
+      <div class="column-left">
+          <p><b>Про нас</b><br>
+              Компанія «Укр Житло Сервіс» – команда професіоналів з багаторічним досвідом у проектуванні, монтажу, 
+              ремонту та обслуговуванні інженерних мереж та будинків</p>
+      </div>
+  </div>
+  <div class="footer-bottom">
+     Розробник: Вероніка Лебедовська
+  </div>
+ <script>
+    new ItcAccordion(document.querySelector('.accordion'), {
+      alwaysOpen: true
+    });
+  </script>
+</body>
+</html>
