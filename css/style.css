@@ -540,6 +540,73 @@ ul {
   .close-btn:hover {
     background: #ddd;
   }
+/*часті запитання*/
+.faq-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  border-radius: 12px;
+}
+
+.faq-title {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: #005a9c;
+}
+
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faq-item {
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #cce4f7;
+}
+
+.faq-question {
+  width: 100%;
+  padding: 1rem;
+  text-align: left;
+  background: #d0ebff;
+  color: #004080;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 19px;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: #b0dbff;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background: #e9f6ff;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 1rem;
+}
+.faq-answer p{
+  font-size: 17px !important;
+}
+.faq-answer.open {
+  padding: 1rem;
+  max-height: 200px; /* Adjust if needed */
+}
+
+@media (max-width: 600px) {
+  .faq-title {
+    font-size: 1.5rem;
+  }
+  .faq-question {
+    font-size: 0.95rem;
+  }
+}
 /*низ сайту*/
 .footer {
   background: #0070BB; /* Slightly darker sky blue */
