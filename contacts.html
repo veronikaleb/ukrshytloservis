@@ -6,12 +6,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/jquery-ui.min.js"></script>
     <script src="JS/mylibs1.js"></script>
     <script type="module" src="JS/feedback.js"></script>
     <script type="module" src="JS/firebase.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
  <nav class="top-menu">
@@ -57,71 +58,83 @@
         </div> 
           <h1>Залиште відгук</h1>
   
-  <form id="feedbackForm">
+ <form id="feedbackForm">
   <input type="text" id="name" placeholder="Ваше ім'я" required />
   <input type="email" id="email" placeholder="Ваш Email" required />
   <textarea id="message" placeholder="Ваше повідомлення" rows="5" required></textarea>
+
+  <!-- Google reCAPTCHA -->
+  <div class="g-recaptcha" data-sitekey="6LcqU04rAAAAAFXhRsRyYadu_r2CcVLwjc_ddZxA"></div>
+
   <button type="submit" id="submitBtn">Відправити</button>
   <div id="loadingSpinner" style="display:none;">⏳ Надсилання...</div>
 </form>
 <div id="response"></div>
-
-
-  <div id="response"></div>
-
   <!-- Firebase SDK -->
   <script type="module">
-    // Імпортуємо Firebase SDK модулі
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-    // Конфігурація Firebase — заміни на свої дані з Firebase Console
- const firebaseConfig = {
-  apiKey: "AIzaSyCspFFtNGfS9wLghKLAu4ORMsJ1MH_YNCo",
-  authDomain: "ukr-zhytlo-web.firebaseapp.com",
-  projectId: "ukr-zhytlo-web",
-  storageBucket: "ukr-zhytlo-web.firebasestorage.app",
-  messagingSenderId: "351755151802",
-  appId: "1:351755151802:web:1b317066b5f82111b49583",
-  measurementId: "G-QX479THV6S"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyCspFFtNGfS9wLghKLAu4ORMsJ1MH_YNCo",
+    authDomain: "ukr-zhytlo-web.firebaseapp.com",
+    projectId: "ukr-zhytlo-web",
+    storageBucket: "ukr-zhytlo-web.firebasestorage.app",
+    messagingSenderId: "351755151802",
+    appId: "1:351755151802:web:1b317066b5f82111b49583",
+    measurementId: "G-QX479THV6S"
+  };
 
-    // Ініціалізація Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-    const form = document.getElementById('feedbackForm');
-    const responseDiv = document.getElementById('response');
+  const form = document.getElementById('feedbackForm');
+  const responseDiv = document.getElementById('response');
+  const submitBtn = document.getElementById('submitBtn');
+  const spinner = document.getElementById('loadingSpinner');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
 
-      const name = form.name.value.trim();
-      const email = form.email.value.trim();
-      const message = form.message.value.trim();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+    const recaptchaToken = grecaptcha.getResponse();
 
-      if (!name || !email || !message) {
-        responseDiv.textContent = "Будь ласка, заповніть всі поля!";
-        return;
-      }
+    if (!name || !email || !message) {
+      responseDiv.textContent = "Будь ласка, заповніть всі поля!";
+      return;
+    }
 
-      try {
-        await addDoc(collection(db, 'feedback'), {
-          name,
-          email,
-          message,
-          createdAt: serverTimestamp()
-        });
+    if (!recaptchaToken) {
+      responseDiv.textContent = "Підтвердіть, що ви не робот!";
+      return;
+    }
 
-        responseDiv.style.color = 'green';
-        responseDiv.textContent = "Дякуємо за ваш відгук!";
-        form.reset();
-      } catch (error) {
-        responseDiv.style.color = 'red';
-        responseDiv.textContent = "Помилка при відправці: " + error.message;
-      }
-    });
-  </script>  
+    spinner.style.display = 'block';
+    submitBtn.disabled = true;
+
+    try {
+      await addDoc(collection(db, 'feedback'), {
+        name,
+        email,
+        message,
+        createdAt: serverTimestamp()
+      });
+
+      responseDiv.style.color = 'green';
+      responseDiv.textContent = "Дякуємо за ваш відгук!";
+      form.reset();
+      grecaptcha.reset();
+    } catch (error) {
+      responseDiv.style.color = 'red';
+      responseDiv.textContent = "Помилка при відправці: " + error.message;
+    } finally {
+      spinner.style.display = 'none';
+      submitBtn.disabled = false;
+    }
+  });
+</script>
     </section>
     <footer class="footer">
         <div class="row">
