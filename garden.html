@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Вітаємо</title>
+   <title>Укр Житло Сервіс – Комплексне обслуговування вашої нерухомості</title>
+   <link rel="icon" type="image/png" href="images/logo_3.png">
     <link rel="stylesheet" type="text/css" href="css/style_frame.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/jquery-ui.min.js"></script>
-    <script src="JS/mylibs1.js"></script>
+    <script src="JS/frame.js"></script>
 </head>
 <body>
     <section class="main">
@@ -23,6 +24,23 @@
 				<p><b>2. Посадка рослин та дерев:</b> Наші експерти допоможуть підібрати та посадити рослини та дерева, створюючи затишне та естетичне середовище.</p>
 				<p><b>3. Догляд за газоном та рослинами:</b> Ми забезпечимо регулярний догляд за газоном, кущами, квітами та деревами, щоб ваша територія завжди виглядала охайно та доглянуто.</p>
 				<p><b>"Укр Житло Сервіс" — Професійний догляд за прибудинковою територією вашого житла!</b></p>
+			</div>
+			<div class="gallery-container">
+				<button class="arrow left" aria-label="Прокрутити вліво">&#10094;</button>
+				<div class="gallery" id="gallery">
+				<img src="https://f-world.com.ua/wp-content/uploads/2017/01/Man-working-in-flower-garden.jpg" alt="Фото 1" loading="lazy" />
+				<img src="https://static.tildacdn.com/tild6236-3030-4134-b065-613030633932/Kak-stat-sadovnikom-.jpg" alt="Фото 2" loading="lazy" />
+				<img src="https://media.istockphoto.com/id/511600134/ru/%D1%84%D0%BE%D1%82%D0%BE/%D1%81%D0%B0%D0%B4%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA-%D1%81%D0%B0%D0%B4-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82.jpg?s=612x612&w=0&k=20&c=KbXIVQ64DnOKc3S1pB8oN39Jh1P2mHawUa7NDQFdYWc=" alt="Фото 3" loading="lazy" />
+				<img src="https://zagranis.com/assets/cache/images/vakansii/4.-rabota-v-semyah/sadovnik-2-1270x-f64.webp" alt="Фото 4" loading="lazy" />
+				<img src="https://thumbs.dreamstime.com/b/%D1%81%D0%B0%D0%B4%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%B2-%D1%82%D0%B5%D0%BF%D0%BB%D0%B8%D1%86%D0%B5-%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D0%BC-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%84%D0%BE%D1%82%D0%BE-290725616.jpg" alt="Фото 5" loading="lazy" />
+				<img src="https://thumbs.dreamstime.com/b/%D1%81%D0%B0%D0%B4%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%B2-%D1%82%D0%B5%D0%BF%D0%BB%D0%B8%D1%86%D0%B5-%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D0%BC-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%84%D0%BE%D1%82%D0%BE-290725391.jpghttps://thumbs.dreamstime.com/b/%D1%81%D0%B0%D0%B4%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D1%82-%D0%B2-%D1%82%D0%B5%D0%BF%D0%BB%D0%B8%D1%86%D0%B5-%D1%86%D0%B2%D0%B5%D1%82%D0%BE%D1%87%D0%BD%D0%BE%D0%BC-%D0%BC%D0%B0%D0%B3%D0%B0%D0%B7%D0%B8%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%84%D0%BE%D1%82%D0%BE-290725391.jpg" alt="Фото 6" loading="lazy" />
+				<img src="https://ma-work.com.ua/wp-content/uploads/2018/01/sadovnik-ozelenitel.jpg" alt="Фото 7" loading="lazy" />
+				</div>
+				<button class="arrow right" aria-label="Прокрутити вправо">&#10095;</button>
+			</div>
+			<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Збільшене фото">
+				<span class="modal-close" id="closeModal" role="button" aria-label="Закрити">&times;</span>
+				<img id="modalImg" src="" alt="Збільшене фото" />
 			</div>
 		</div>
   </section>

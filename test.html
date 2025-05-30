@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Галерея – Укр Житло Сервіс</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #eef3f9;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .gallery-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+
+    .gallery {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      gap: 12px;
+      padding: 10px;
+    }
+
+    .gallery::-webkit-scrollbar {
+      display: none;
+    }
+
+    .gallery img {
+      flex-shrink: 0;
+      width: 250px;
+      height: 160px;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #007BFF;
+      border: none;
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      z-index: 10;
+      user-select: none;
+    }
+
+    .arrow.left {
+      left: 10px;
+    }
+
+    .arrow.right {
+      right: 10px;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+      touch-action: none; /* для свайпів */
+      user-select: none;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 30px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* Адаптивність */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      .gallery img {
+        width: 180px;
+        height: 115px;
+      }
+      .arrow {
+        padding: 8px;
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Галерея – Укр Житло Сервіс</h1>
+
+  <div class="gallery-container">
+    <button class="arrow left" aria-label="Прокрутити вліво">&#10094;</button>
+    <div class="gallery" id="gallery">
+      <img src="https://source.unsplash.com/featured/?apartment,1" alt="Фото 1" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,2" alt="Фото 2" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,3" alt="Фото 3" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,4" alt="Фото 4" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,5" alt="Фото 5" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,6" alt="Фото 6" loading="lazy" />
+      <img src="https://source.unsplash.com/featured/?apartment,7" alt="Фото 7" loading="lazy" />
+    </div>
+    <button class="arrow right" aria-label="Прокрутити вправо">&#10095;</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Збільшене фото">
+    <span class="modal-close" id="closeModal" role="button" aria-label="Закрити">&times;</span>
+    <img id="modalImg" src="" alt="Збільшене фото" />
+  </div>
+
+  <script>
+    const gallery = document.getElementById("gallery");
+    const leftBtn = document.querySelector(".arrow.left");
+    const rightBtn = document.querySelector(".arrow.right");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeModal = document.getElementById("closeModal");
+
+    const images = Array.from(document.querySelectorAll(".gallery img"));
+    let currentIndex = 0;
+
+    leftBtn.addEventListener("click", () => {
+      gallery.scrollBy({ left: -300, behavior: "smooth" });
+    });
+
+    rightBtn.addEventListener("click", () => {
+      gallery.scrollBy({ left: 300, behavior: "smooth" });
+    });
+
+    // Відкриття модалки по кліку на зображення
+    images.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        currentIndex = index;
+        openModal();
+      });
+    });
+
+    // Оновлення зображення в модалці
+    function updateModalImage() {
+      modalImg.src = images[currentIndex].src;
+      modalImg.alt = images[currentIndex].alt;
+    }
+
+    // Відкриття модального вікна
+    function openModal() {
+      updateModalImage();
+      modal.style.display = "flex";
+      startSlideShow();
+      // Додатково: заблокуємо скрол сторінки, щоб було зручно дивитись
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Закриття модалки
+    function closeModalFunc() {
+      modal.style.display = "none";
+      stopSlideShow();
+      document.body.style.overflow = ''; // відновлюємо скрол
+    }
+
+    closeModal.addEventListener("click", closeModalFunc);
+
+    // Закриття при кліку поза зображенням
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) closeModalFunc();
+    });
+
+    // Автоматичне слайд-шоу в модалці
+    let slideShowInterval = null;
+    const slideShowDelay = 3000; // 3 секунди
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      updateModalImage();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      updateModalImage();
+    }
+
+    function startSlideShow() {
+      stopSlideShow();
+      slideShowInterval = setInterval(nextImage, slideShowDelay);
+    }
+
+    function stopSlideShow() {
+      if (slideShowInterval) {
+        clearInterval(slideShowInterval);
+        slideShowInterval = null;
+      }
+    }
+
+    // Пауза слайдшоу при наведенні / торканні зображення
+    modalImg.addEventListener("mouseenter", stopSlideShow);
+    modalImg.addEventListener("mouseleave", startSlideShow);
+    modalImg.addEventListener("touchstart", stopSlideShow);
+    modalImg.addEventListener("touchend", startSlideShow);
+
+    // Додаємо свайпи для мобільних (пальців)
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // мінімальна відстань для свайпу
+
+    modalImg.addEventListener("touchstart", (e) => {
+      stopSlideShow();
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    modalImg.addEventListener("touchmove", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+    });
+
+    modalImg.addEventListener("touchend", (e) => {
+      const distance = touchEndX - touchStartX;
+      if (Math.abs(distance) > swipeThreshold) {
+        if (distance > 0) {
+          // свайп вправо – показуємо попереднє фото
+          prevImage();
+        } else {
+          // свайп вліво – наступне фото
+          nextImage();
+        }
+      }
+      startSlideShow();
+      // Очищуємо значення
+      touchStartX = 0;
+      touchEndX = 0;
+    });
+  </script>
+</body>
+</html>

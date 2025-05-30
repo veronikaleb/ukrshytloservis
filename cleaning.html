@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Вітаємо</title>
+    <title>Укр Житло Сервіс – Комплексне обслуговування вашої нерухомості</title>
     <link rel="stylesheet" type="text/css" href="css/style_frame.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/jquery-ui.min.js"></script>
-    <script src="JS/mylibs1.js"></script>
+    <script src="JS/frame.js"></script>
 </head>
 <body>
     <section class="main">
@@ -23,14 +23,23 @@
 				<p><b>2. Глибоке очищення приміщень:</b> Наші експерти здійснюють глибоке чищення, включаючи видалення пилу, бруду та бактерій, що дозволяє створити здорове та безпечне середовище.</p>
 				<p><b>3. Чистка після ремонтів чи будівництва:</b> Ми видаляємо будівельний сміття, пил та інші залишки, залишаючи приміщення чистим та готовим до використання.</p>
 			</div>
-		
-			<section class="image-section">
-				<div class="image-gallery">
-					<img src="images/c1.jpeg" alt="Чистка приміщення">
-					<img src="images/c2.jpeg" alt="Після ремонту">
-					<img src="images/c6.jpeg" alt="Глибоке очищення">
+			<div class="gallery-container">
+				<button class="arrow left" aria-label="Прокрутити вліво">&#10094;</button>
+				<div class="gallery" id="gallery">
+				<img src="https://img.freepik.com/free-vector/volunteers-trash-out-composition-with-cityscape-illustration-group-flat-human-characters-with-cleaning-utensils_1284-61784.jpg?semt=ais_hybrid&w=740" alt="Фото 1" loading="lazy" />
+				<img src="https://informnapalm.org/blog/wp-content/uploads/sites/24/2022/01/klining-servis.jpg" alt="Фото 2" loading="lazy" />
+				<img src="https://uborka.com.ua/attachments/lp/img-bg-01.jpg" alt="Фото 3" loading="lazy" />
+				<img src="https://unmomento.com.ua/files/blog/view/215_img_ru.jpg" alt="Фото 4" loading="lazy" />
+				<img src="https://vinbazar.com/sites/default/files/imagecache/690x/newfiles/2021-11/eko-klining-luber-770x560.jpg" alt="Фото 5" loading="lazy" />
+				<img src="https://img.freepik.com/free-photo/couple-collects-garbage-garbage-bags-park_1157-27386.jpg?semt=ais_hybrid&w=740" alt="Фото 6" loading="lazy" />
+				<img src="https://www.cleaner-life.com.ua/wp-content/uploads/2022/07/13.jpg" alt="Фото 7" loading="lazy" />
 				</div>
-			</section>
+				<button class="arrow right" aria-label="Прокрутити вправо">&#10095;</button>
+			</div>
+			<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Збільшене фото">
+				<span class="modal-close" id="closeModal" role="button" aria-label="Закрити">&times;</span>
+				<img id="modalImg" src="" alt="Збільшене фото" />
+			</div>
 		</div>
   </section>
 </body>
