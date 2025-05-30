@@ -262,6 +262,12 @@
             свою кваліфікацію та навички, що гарантує високу якість виконуваних робіт.
         </div>
     </div><br>
+    <section class="news-background">
+  <section class="wrapper-news">
+    <h1 class="news-title">Останні новини</h1>
+    <div id="news-container" class="news-grid"></div>
+  </section>
+</section>
       <div class="name_service">
 	    	<h1>Подяки</h1>
 	    </div>  
@@ -347,7 +353,7 @@
 		<h1>Ми співпрацюємо з:</h1>
 	</div>    
     <div class="image-container">
-        <img src="images/coop.png" alt="Your Image">
+       <img src="images/coop.png" alt="Your Image"><br>
     </div>
 	</section>    
     <footer class="footer">
@@ -373,7 +379,82 @@
            Розробник: Вероніка Лебедовська
         </div>
     </footer>  
+<script>
+    const newsItems = [
+      {
+        img: "images/n4.jpg",
+        title: "Початок обслуговування ЖК \"На Прорізній\"",
+        date: "13.07.2024",
+        link: "#link"
+      },
+      {
+        img: "images/p1.png",
+        title: "Монтаж систем освітлення",
+        date: "30.10.2022",
+        link: "#link"
+      },
+      {
+        img: "images/p2.png",
+        title: "Заміна та ремонт електропроводки",
+        date: "19.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/p3.png",
+        title: "Прокладка електрокабелю",
+        date: "24.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/p4.png",
+        title: "Прокладка труб опалення",
+        date: "29.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/n1.jpg",
+        title: "Екскурсія на Bayer",
+        date: "30.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/n2.jpg",
+        title: "Зустріч з представниками Бучанської міської ради",
+        date: "09.03.2024",
+        link: "#link"
+      },
+      {
+        img: "images/n3.jpg",
+        title: "Відновлення будинків ЖК \"Буча Квартал\"",
+        date: "15.12.2024",
+        link: "#link"
+      }
+    ];
 
+    function renderNews(count = 3) {
+      const container = document.getElementById('news-container');
+      container.innerHTML = '';
 
+      newsItems.slice(0, count).forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'news-card';
+
+        card.innerHTML = `
+          <div class="news-image">
+            <img src="${item.img}" alt="${item.title}" />
+          </div>
+          <div class="news-content">
+            <h2 class="news-headline">${item.title}</h2>
+            <div class="news-date"><i class="fa fa-clock-o"></i> ${item.date}</div>
+            <a href="${item.link}" class="btn-readmore" tabindex="0">Детальніше</a>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => renderNews(3));
+  </script>
 </body>
 </html>

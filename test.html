@@ -2,266 +2,213 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Галерея – Укр Житло Сервіс</title>
+  <title>Останні новини – Укр Житло Сервіс</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
       margin: 0;
-      background: #eef3f9;
-      padding: 20px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    .gallery-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 30px auto;
-      overflow: hidden;
-    }
-
-    .gallery {
+      padding: 25px;
       display: flex;
-      overflow-x: auto;
-      scroll-behavior: smooth;
-      gap: 12px;
-      padding: 10px;
-    }
-
-    .gallery::-webkit-scrollbar {
-      display: none;
-    }
-
-    .gallery img {
-      flex-shrink: 0;
-      width: 250px;
-      height: 160px;
-      border-radius: 10px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #007BFF;
-      border: none;
-      color: white;
-      font-size: 20px;
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      user-select: none;
-    }
-
-    .arrow.left {
-      left: 10px;
-    }
-
-    .arrow.right {
-      right: 10px;
-    }
-
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
       justify-content: center;
-      align-items: center;
     }
 
-    .modal img {
-      max-width: 90%;
-      max-height: 90%;
+    .wrapper-news {
+      max-width: 960px;
+      width: 100%;
+      background-color: #ffffff;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .news-title {
+      text-align: center;
+      color: #003366;
+      font-weight: 800;
+      font-size: 2.4rem;
+      margin-bottom: 35px;
+      font-family: 'Arial Black', Arial, sans-serif;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 22px;
+    }
+
+    .news-card {
+      background: #d9e9fb;
       border-radius: 10px;
-      touch-action: none; /* для свайпів */
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+
+    .news-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    .news-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .news-content {
+      padding: 16px 18px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .news-headline {
+      font-size: 1.15rem;
+      color: #002244;
+      margin: 0 0 10px 0;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .news-date {
+      font-size: 0.87rem;
+      color: #444;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 18px;
+    }
+
+    .btn-readmore {
+      background-color: #005bbb;
+      color: #fff;
+      padding: 9px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      text-align: center;
+      transition: background-color 0.25s ease;
       user-select: none;
     }
 
-    .modal-close {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
-      user-select: none;
+    .btn-readmore:hover {
+      background-color: #003d7a;
     }
 
-    /* Адаптивність */
-    @media (max-width: 600px) {
+    /* Мобільна адаптивність */
+    @media (max-width: 480px) {
       body {
-        padding: 10px;
+        padding: 15px 10px;
       }
-      .gallery img {
-        width: 180px;
-        height: 115px;
+
+      .wrapper-news {
+        padding: 20px 15px;
       }
-      .arrow {
-        padding: 8px;
-        font-size: 18px;
+
+      .news-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+      }
+
+      .btn-readmore {
+        width: 100%;
+        padding: 12px 0;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <h1>Галерея – Укр Житло Сервіс</h1>
-
-  <div class="gallery-container">
-    <button class="arrow left" aria-label="Прокрутити вліво">&#10094;</button>
-    <div class="gallery" id="gallery">
-      <img src="https://source.unsplash.com/featured/?apartment,1" alt="Фото 1" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,2" alt="Фото 2" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,3" alt="Фото 3" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,4" alt="Фото 4" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,5" alt="Фото 5" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,6" alt="Фото 6" loading="lazy" />
-      <img src="https://source.unsplash.com/featured/?apartment,7" alt="Фото 7" loading="lazy" />
-    </div>
-    <button class="arrow right" aria-label="Прокрутити вправо">&#10095;</button>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Збільшене фото">
-    <span class="modal-close" id="closeModal" role="button" aria-label="Закрити">&times;</span>
-    <img id="modalImg" src="" alt="Збільшене фото" />
-  </div>
+  <section class="wrapper-news">
+    <h1 class="news-title">Останні новини</h1>
+    <div id="news-container" class="news-grid"></div>
+  </section>
 
   <script>
-    const gallery = document.getElementById("gallery");
-    const leftBtn = document.querySelector(".arrow.left");
-    const rightBtn = document.querySelector(".arrow.right");
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    const closeModal = document.getElementById("closeModal");
+    const newsItems = [
+      {
+        img: "images/n4.jpg",
+        title: "Початок обслуговування ЖК \"На Прорізній\"",
+        date: "13.07.2024",
+        link: "#link"
+      },
+      {
+        img: "images/p1.png",
+        title: "Монтаж систем освітлення",
+        date: "30.10.2022",
+        link: "#link"
+      },
+      {
+        img: "images/p2.png",
+        title: "Заміна та ремонт електропроводки",
+        date: "19.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/p3.png",
+        title: "Прокладка електрокабелю",
+        date: "24.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/p4.png",
+        title: "Прокладка труб опалення",
+        date: "29.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/n1.jpg",
+        title: "Екскурсія на Bayer",
+        date: "30.12.2023",
+        link: "#link"
+      },
+      {
+        img: "images/n2.jpg",
+        title: "Зустріч з представниками Бучанської міської ради",
+        date: "09.03.2024",
+        link: "#link"
+      },
+      {
+        img: "images/n3.jpg",
+        title: "Відновлення будинків ЖК \"Буча Квартал\"",
+        date: "15.12.2024",
+        link: "#link"
+      }
+    ];
 
-    const images = Array.from(document.querySelectorAll(".gallery img"));
-    let currentIndex = 0;
+    function renderNews(count = 3) {
+      const container = document.getElementById('news-container');
+      container.innerHTML = '';
 
-    leftBtn.addEventListener("click", () => {
-      gallery.scrollBy({ left: -300, behavior: "smooth" });
-    });
+      newsItems.slice(0, count).forEach(item => {
+        const card = document.createElement('article');
+        card.className = 'news-card';
 
-    rightBtn.addEventListener("click", () => {
-      gallery.scrollBy({ left: 300, behavior: "smooth" });
-    });
+        card.innerHTML = `
+          <div class="news-image">
+            <img src="${item.img}" alt="${item.title}" />
+          </div>
+          <div class="news-content">
+            <h2 class="news-headline">${item.title}</h2>
+            <div class="news-date"><i class="fa fa-clock-o"></i> ${item.date}</div>
+            <a href="${item.link}" class="btn-readmore" tabindex="0">Детальніше</a>
+          </div>
+        `;
 
-    // Відкриття модалки по кліку на зображення
-    images.forEach((img, index) => {
-      img.addEventListener("click", () => {
-        currentIndex = index;
-        openModal();
+        container.appendChild(card);
       });
-    });
-
-    // Оновлення зображення в модалці
-    function updateModalImage() {
-      modalImg.src = images[currentIndex].src;
-      modalImg.alt = images[currentIndex].alt;
     }
 
-    // Відкриття модального вікна
-    function openModal() {
-      updateModalImage();
-      modal.style.display = "flex";
-      startSlideShow();
-      // Додатково: заблокуємо скрол сторінки, щоб було зручно дивитись
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Закриття модалки
-    function closeModalFunc() {
-      modal.style.display = "none";
-      stopSlideShow();
-      document.body.style.overflow = ''; // відновлюємо скрол
-    }
-
-    closeModal.addEventListener("click", closeModalFunc);
-
-    // Закриття при кліку поза зображенням
-    window.addEventListener("click", (e) => {
-      if (e.target === modal) closeModalFunc();
-    });
-
-    // Автоматичне слайд-шоу в модалці
-    let slideShowInterval = null;
-    const slideShowDelay = 3000; // 3 секунди
-
-    function nextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      updateModalImage();
-    }
-
-    function prevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      updateModalImage();
-    }
-
-    function startSlideShow() {
-      stopSlideShow();
-      slideShowInterval = setInterval(nextImage, slideShowDelay);
-    }
-
-    function stopSlideShow() {
-      if (slideShowInterval) {
-        clearInterval(slideShowInterval);
-        slideShowInterval = null;
-      }
-    }
-
-    // Пауза слайдшоу при наведенні / торканні зображення
-    modalImg.addEventListener("mouseenter", stopSlideShow);
-    modalImg.addEventListener("mouseleave", startSlideShow);
-    modalImg.addEventListener("touchstart", stopSlideShow);
-    modalImg.addEventListener("touchend", startSlideShow);
-
-    // Додаємо свайпи для мобільних (пальців)
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const swipeThreshold = 50; // мінімальна відстань для свайпу
-
-    modalImg.addEventListener("touchstart", (e) => {
-      stopSlideShow();
-      touchStartX = e.changedTouches[0].screenX;
-    });
-
-    modalImg.addEventListener("touchmove", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-    });
-
-    modalImg.addEventListener("touchend", (e) => {
-      const distance = touchEndX - touchStartX;
-      if (Math.abs(distance) > swipeThreshold) {
-        if (distance > 0) {
-          // свайп вправо – показуємо попереднє фото
-          prevImage();
-        } else {
-          // свайп вліво – наступне фото
-          nextImage();
-        }
-      }
-      startSlideShow();
-      // Очищуємо значення
-      touchStartX = 0;
-      touchEndX = 0;
-    });
+    window.addEventListener('DOMContentLoaded', () => renderNews(3));
   </script>
 </body>
 </html>
