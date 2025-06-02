@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('scroll', () => {
   const btn = document.querySelector('.scrollToTop');
   if (!btn) return;
-  if (window.scrollY > window.innerHeight / 3) {я
+  if (window.scrollY > window.innerHeight / 3) {
     btn.classList.add('showScrollTop');
   } else {
     btn.classList.remove('showScrollTop');
