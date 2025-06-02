@@ -1,11 +1,80 @@
+// ===== News Rendering =====
+const newsItems = [
+  {
+    img: "images/n4.jpg",
+    title: "Початок обслуговування ЖК \"На Прорізній\"",
+    date: "13.07.2024",
+    link: "#link"
+  },
+  {
+    img: "images/p1.png",
+    title: "Монтаж систем освітлення",
+    date: "30.10.2022",
+    link: "#link"
+  },
+  {
+    img: "images/p2.png",
+    title: "Заміна та ремонт електропроводки",
+    date: "19.12.2023",
+    link: "#link"
+  },
+  {
+    img: "images/p3.png",
+    title: "Прокладка електрокабелю",
+    date: "24.12.2023",
+    link: "#link"
+  },
+  {
+    img: "images/p4.png",
+    title: "Прокладка труб опалення",
+    date: "29.12.2023",
+    link: "#link"
+  },
+  {
+    img: "images/n1.jpg",
+    title: "Екскурсія на Bayer",
+    date: "30.12.2023",
+    link: "#link"
+  },
+  {
+    img: "images/n2.jpg",
+    title: "Зустріч з представниками Бучанської міської ради",
+    date: "09.03.2024",
+    link: "#link"
+  },
+  {
+    img: "images/n3.jpg",
+    title: "Відновлення будинків ЖК \"Буча Квартал\"",
+    date: "15.12.2024",
+    link: "#link"
+  }
+];
+
+function renderNews(count = 3) {
+  const container = document.getElementById('news-container');
+  if (!container) return;
+  container.innerHTML = '';
+  newsItems.slice(0, count).forEach(item => {
+    const card = document.createElement('article');
+    card.className = 'news-card';
+    card.innerHTML = `
+      <div class="news-image">
+        <img src="${item.img}" alt="${item.title}" />
+      </div>
+      <div class="news-content">
+        <h2 class="news-headline">${item.title}</h2>
+        <div class="news-date"><i class="fa fa-clock-o"></i> ${item.date}</div>
+        <a href="${item.link}" class="btn-readmore" tabindex="0">Детальніше</a>
+      </div>`;
+    container.appendChild(card);
+  });
+}
+
 // ===== Accordion Class =====
 class ItcAccordion {
   constructor(target, config) {
     this._el = typeof target === 'string' ? document.querySelector(target) : target;
-    const defaultConfig = {
-      alwaysOpen: true,
-      duration: 350
-    };
+    const defaultConfig = { alwaysOpen: true, duration: 350 };
     this._config = Object.assign(defaultConfig, config);
     this.addEventListener();
   }
@@ -79,6 +148,8 @@ class ItcAccordion {
 
 // ===== DOMContentLoaded Event =====
 document.addEventListener('DOMContentLoaded', () => {
+  renderNews(3);
+
   // ===== Modal Gallery =====
   const galleryImages = document.querySelectorAll('.image-container_diplomas img');
   const modal = document.getElementById('modal');
@@ -128,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
   animatedElements.forEach(el => observer.observe(el));
 
   // ===== Tabs =====
-  window.openTab = function(evt, tab) {
+  window.openTab = function (evt, tab) {
     const tabcontent = document.getElementsByClassName("content__inner");
     for (let i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
@@ -154,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== Init ItcAccordion if present =====
+  // ===== Init Accordion if present =====
   const accordion = document.querySelector('.accordion');
   if (accordion) {
     new ItcAccordion(accordion, {
@@ -162,23 +233,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ===== FAQ Accordion (simple toggle logic) =====
+  // ===== FAQ Toggle =====
   const faqQuestions = document.querySelectorAll(".faq-question");
-
   faqQuestions.forEach(q => {
     q.addEventListener("click", () => {
       const answer = q.nextElementSibling;
-
-      // Закриваємо всі інші
       document.querySelectorAll(".faq-answer").forEach(a => {
-        if (a !== answer) {
-          a.classList.remove("open");
-        }
+        if (a !== answer) a.classList.remove("open");
       });
-
-      // Перемикаємо активну
       answer.classList.toggle("open");
     });
   });
 });
 
+// ===== Scroll To Top Button =====
+window.addEventListener('scroll', () => {
+  const btn = document.querySelector('.scrollToTop');
+  if (!btn) return;
+  if (window.scrollY > window.innerHeight / 3) {я
+    btn.classList.add('showScrollTop');
+  } else {
+    btn.classList.remove('showScrollTop');
+  }
+});

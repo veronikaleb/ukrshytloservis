@@ -261,6 +261,26 @@ ul {
     font-size: 18px;
   }
 }
+/*стрілка наверх*/
+/* ScrollToTop button */
+.scrollToTop{ 
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 500;
+  transition: all .5s ease-in-out;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+background:#555;} /* background - цвет кнопки*/
+.scrollToTop span{ margin-top:12px;color:#FFF;}
+.showScrollTop{ font-size:14px;opacity:0.5;}
+.scrollToTop:hover{background-color:#4B9CD3;border-radius:100%;}
+.scrollToTop:active{background-color:#6CB4EE;}
 /*переваги*/
 .intro-text {
   max-width: 900px;
@@ -360,10 +380,9 @@ ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 56vh;
 }
 .image-container img {
-  max-width: 55%;
+  max-width: 65%;
   height: auto;
 }
 .benefits-container {
