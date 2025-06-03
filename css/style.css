@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 body {
-    background-color: var(--white);
+    background-color:#f8f9fa;
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
@@ -21,7 +21,6 @@ a {
 ul {
   list-style: none;
 }
-
 /* Header */
 @import url('https://fonts.googleapis.com/css?family=Arimo');
 .top-menu {
@@ -115,58 +114,140 @@ ul {
     text-align: center;
   }
 }
-/* Main styles */
-.container17 {
-    max-width: 940px;
-    margin: 0 auto;
-    padding: 0 10px;
-}
-.jumbotron {
-    background-image: url(https://vandrivka.com.ua/wp-content/uploads/2021/06/Buchanskij-miskij-park-6.jpg);
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    height: 550px;
-}
-.main_tt {
-    position: relative;
-    top: 180px;
-    text-align: center;
-}
-.main_tt h1 {
-	  background-color: #6CB4EE;
-    color: #0E3386;
-    font-family: 'Raleway', sans-serif;
-    font-size: 60px;
-    margin-top: 0;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-.btn-main {
-    background-color: #6CB4EE;
-    color: #0E3386;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 1.3px;
-    padding: 16px 40px;
-    text-decoration: none;
+/*блок новин на головній сторінці*/
+ .announcement-section {
+  background: linear-gradient(135deg, #cce7ff, #e6f3ff);
+  padding: 10px 10px;
+  display: flex;
+  justify-content: center;
 }
 
-.btn-default {
-    color: #0077b6;
-    border: 1px solid #333333;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 10px;
-    letter-spacing: 1.3px;
-    padding: 10px 20px;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 20px;
-    padding-right: 50px;
-    padding-left: 50px;
+.announcement-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.announcement-text {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-box {
+  display: inline-block;
+  font-size: 28px;
+  font-weight: bold;
+  color: #004080;
+  padding: 20px 30px;
+  background-color: #ffffffcc;
+  border-left: 5px solid #007BFF;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+}
+
+.news_frame {
+  flex: 1 1 340px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.news_frame iframe {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  border: none;
+  pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+  .announcement-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .announcement-box {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .news_frame iframe {
+    height: 400px;
+  }
+}
+/*основний надпис*/
+.jumbotron {
+  background-image: url(https://vandrivka.com.ua/wp-content/uploads/2021/06/Buchanskij-miskij-park-6.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 15px;
+}
+
+.container17 {
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 25px 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  display: inline-block;         /* ← лише по контенту */
+  text-align: center;
+  max-width: 90%;                /* адаптивна ширина */
+}
+
+.main_tt h1 {
+  font-size: 22px;
+  color: #0a2a43;
+  margin: 0 0 15px;
+  border-bottom: 2px solid #6CB4EE;
+  padding-bottom: 10px;
+  white-space: nowrap;
+  overflow-wrap: normal;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.btn-main {
+  margin-left: 20px;
+  display: inline-block;
+  background: linear-gradient(to right, #6CB4EE, #4aa8e4);
+  color: white;
+  font-size: 12px;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 123, 182, 0.3);
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+@media (max-width: 480px) {
+  .container17 {
+    padding: 20px 15px;
+  }
+
+  .main_tt h1 {
+    font-size: 20px;
+  }
+
+  .btn-main {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .jumbotron {
+    padding: 40px 10px;
+    min-height: auto;
+  }
 }
 /*місія*/
 .fade-in {
@@ -350,7 +431,10 @@ background:#555;} /* background - цвет кнопки*/
   padding: 15px 0;
   text-align: center;
   border-radius: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+.name_service h2 {
+  font-style: inherit;
 }
 .name_service h1 {
   font-size: 25px !important;
@@ -832,7 +916,8 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+  background: linear-gradient(135deg, #005f99, #66ccff);
+
 }
 
 .flip-inner {
