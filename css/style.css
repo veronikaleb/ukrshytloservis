@@ -447,7 +447,7 @@ background:#555;} /* background - цвет кнопки*/
 .name_other {
   padding: 15px 0;
   text-align: center;
-  background-color: #4B9CD3;
+  background: linear-gradient(90deg, #7BB8E3, #4B9CD3, #2D75B2);
   border-radius: 10px;
   margin-bottom: 15px;
 }
@@ -1280,6 +1280,62 @@ button {
     }
 
 /*Про компанію*/
+/*меню про нас*/
+.horizontal-menu {
+  background: linear-gradient(90deg, #7BB8E3, #4B9CD3, #2D75B2);
+  border-radius: 12px;
+  padding: 10px 25px;
+  display: inline-flex; /* inline-flex щоб ширина була по контенту, але з flex-вирівнюванням */
+  justify-content: center;
+  align-items: center;
+}
+  .horizontal-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .horizontal-menu li a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+    display: block;
+  }
+
+  .horizontal-menu li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #e0eaff;
+  }
+
+  .horizontal-menu li.active a {
+    background-color: white;
+    color: #3399ff;
+    font-weight: 700;
+  }
+
+  @media (max-width: 480px) {
+    .horizontal-menu {
+      padding: 8px 15px;
+    }
+
+    .horizontal-menu ul {
+      gap: 20px;
+    }
+
+    .horizontal-menu li a {
+      font-size: 18px;
+      padding: 6px 10px;
+    }
+  }
+  /*засновник*/
 .founder-block {
   background-color: #3E8EDE; /* Фон блоку */
   display: flex; /* Використовуємо флекс для горизонтального вирівнювання */
@@ -1402,25 +1458,6 @@ button {
   background-color: #B9D9EB;
 }
 
-.cta {
-  text-align: center;
-  margin: 30px 0;
-}
-
-.cta button {
-  background-color: #3E8EDE;
-  color: #fff;
-  padding: 15px 25px;
-  border: none;
-  font-size: 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.cta button:hover {
-  background-color: #224C98;
-}
 .documents-block {
   background-color: #0070BB;
   color: #ffffff;
@@ -2066,4 +2103,108 @@ table td:last-child {
     font-size: 1.05em;
   }
 }
+/*команда ужс*/
+.team-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f8fbff;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.team-member img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.team-member p {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Адаптація */
+@media (max-width: 900px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/*документи*/
+.documents-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f0f6ff;
+}
+
+.documents-section h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #2a6ebb;
+}
+
+.documents-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.document-card {
+  display: block;
+  background: linear-gradient(135deg, #4B9CD3, #70bfff);
+  color: white;
+  text-decoration: none;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  transition: transform 0.2s, background 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.document-card:hover {
+  background: linear-gradient(135deg, #3a89c9, #5eb8ff);
+  transform: translateY(-2px);
+}
+
+/* Адаптація для планшетів */
+@media (max-width: 768px) {
+  .documents-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Адаптація для телефонів */
+@media (max-width: 500px) {
+  .documents-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .document-card {
+    font-size: 15px;
+    padding: 14px 16px;
+  }
+}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Укр Житло Сервіс – Комплексне обслуговування вашої нерухомості</title>
+    <link rel="icon" type="image/png" href="images/logo_3.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="JS/jquery-3.3.1.min.js"></script>
+    <script src="JS/jquery-ui.min.js"></script>
+    <script src="JS/mylibs1.js"></script>
+</head>
+<body>
+  <nav class="top-menu">
+  <a class="navbar-logo" href="index.html"><img src="images/logo_3.png"></a>
+  <button class="menu-toggle" id="menuToggle">&#9776;</button>
+  <ul class="menu-main" id="menu">
+    <li><a href="index.html">Головна</a></li>
+    <li><a href="homes.html">Комплекси</a></li>
+    <li><a href="information.html">Про нас</a></li>
+    <li><a href="services.html">Послуги</a></li>
+    <li><a href="price.html">Ціни</a></li>
+    <li><a href="news.html">Новини</a></li>
+    <li><a href="contacts.html">Контакти</a></li>
+  </ul>
+</nav>
+  <div class="name_other">
+		<h1>Документи</h1>
+	</div>
+  	<section class="main fade-in visible">
+   <div style="text-align: center; width: 100%;">
+    <section class="horizontal-menu">
+      <ul>
+        <li><a href="information.html">Про нас</a></li>
+        <li><a href="team.html">Команда</a></li>
+        <li class="active"><a href="documents.html">Документи</a></li>
+      </ul>
+    </section>
+  </div>
+    <section class="section_site_info visible" id="info">
+       <section class="documents-section">
+  <div class="documents-grid">
+    <a href="document/Лаб 8 Лебедовська ІСТ-31д звіт.docx" target="_blank" class="document-card">Статут компанії</a>
+    <a href="document/Лаб 9 Лебедовська ІСТ-31д звіт.docx" target="_blank" class="document-card">Сертифікат відповідності</a>
+    <a href="document/Практична №10, Лебедовська ІСТ-21д.docx" target="_blank" class="document-card">Розпорядження №1</a>
+    <a href="document/Практична №11, Лебедовська ІСТ-21д.docx" target="_blank" class="document-card">Політика конфіденційності</a>
+    <a href="document/Практична №12, Лебедовська ІСТ-21д.docx" target="_blank" class="document-card">Правила надання послуг</a>
+    <a href="document/Практична №13, Лебедовська ІСТ-21д.docx" target="_blank" class="document-card">Фінансова звітність 2024</a>
+  </div>
+</section>
+      </section>
+	 <footer class="footer">
+        <div class="row">
+            <div class="column-right">
+                <p>Укр Житло Сервіс © 2016-2025</p>
+            </div>
+            <div class="column-center">
+                <p>
+                    <i class="fa fa-home" aria-hidden="true"></i> Київська обл., м. Буча, вул. Амосова 4, кв. 1<br>
+                    <i class="fa fa-phone" aria-hidden="true"></i> (098) 488-20-40<br>
+                    <i class="fa fa-clock-o" aria-hidden="true"></i> Пн-Пт: 8:00-16:00<br>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i> ykrzhitloservis@gmail.com
+                </p>
+            </div>
+            <div class="column-left">
+                <p><b>Про нас</b><br>
+                    Компанія «Укр Житло Сервіс» – команда професіоналів з багаторічним досвідом у проектуванні, монтажу, 
+                    ремонту та обслуговуванні інженерних мереж та будинків</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           Розробник: Вероніка Лебедовська
+        </div>
+        </footer>
+        <script>
+            // Додати клас для появи секції одразу після завантаження
+            window.addEventListener('DOMContentLoaded', () => {
+              const section = document.getElementById('info');
+              section.classList.add('visible');
+            });
+          
+            // Слайдер
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.slide');
+            const track = document.getElementById('sliderTrack');
+          
+            function updateSlider() {
+              track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+          
+            function nextSlide() {
+              currentSlide = (currentSlide + 1) % slides.length;
+              updateSlider();
+            }
+          
+            function prevSlide() {
+              currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+              updateSlider();
+            }
+          
+            // Автоматична прокрутка кожні 1 секунду
+            setInterval(nextSlide, 3000);
+          
+            // Swipe support
+            let startX = 0;
+            track.addEventListener('touchstart', (e) => {
+              startX = e.touches[0].clientX;
+            });
+          
+            track.addEventListener('touchend', (e) => {
+              let endX = e.changedTouches[0].clientX;
+              if (startX - endX > 50) nextSlide();
+              if (endX - startX > 50) prevSlide();
+            });
+          </script>       
+</body>
+</html>
