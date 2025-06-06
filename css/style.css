@@ -120,7 +120,7 @@ ul {
 }
 /*блок новин на головній сторінці*/
  .announcement-section {
-  padding: 10px 10px;
+  padding: 10px;
   display: flex;
   justify-content: center;
 }
@@ -161,34 +161,30 @@ ul {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .fb-wrapper {
   width: 100%;
-  max-width: 380px;
-  height: auto;
-  aspect-ratio: 1 / 1.3; /* орієнтовно для фб стрічки */
+  max-width: 100%;
+  height: 500px;
   position: relative;
 }
 
 .fb-wrapper iframe {
   width: 100%;
   height: 100%;
+  border: none;
   position: absolute;
   top: 0;
   left: 0;
-  border: none;
 }
+
 @media (max-width: 768px) {
   .announcement-container {
     flex-direction: column;
     align-items: center;
-  }
-
-  .announcement-text {
-    width: 100%;
-    justify-content: center;
-    padding: 0 10px;
   }
 
   .announcement-box {
@@ -199,17 +195,19 @@ ul {
   }
 
   .news_frame {
-    width: 100%;
-    padding: 0 10px;
-    box-sizing: border-box;
+    padding: 0;
   }
 
-  .news_frame iframe {
+  .fb-wrapper {
+    height: 500px; /* або більше, якщо потрібно */
+  }
+
+  .fb-wrapper iframe {
     width: 100% !important;
-    max-width: 100% !important;
-    height: 450px;
+    height: 100% !important;
   }
 }
+
 /*основний надпис*/
 .jumbotron {
   background-image: url(https://vandrivka.com.ua/wp-content/uploads/2021/06/Buchanskij-miskij-park-6.jpg);
