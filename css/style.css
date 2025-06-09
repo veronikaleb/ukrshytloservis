@@ -116,7 +116,7 @@ ul {
   width: 100%;
 }
 /*блок новин на головній сторінці*/
- .announcement-section {
+.announcement-section {
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -129,6 +129,7 @@ ul {
   gap: 30px;
   max-width: 1100px;
   width: 100%;
+  background-image: url(../images/bg2.jpg);
 }
 .announcement-text {
   flex: 1 1 300px;
@@ -168,81 +169,188 @@ ul {
   height: 100%;
   border: none;
   position: absolute;
-  top: 0;
-  left: 0;
+}
+.center-wrapper {
+  height: 100vh; 
+  display: flex;
+  justify-content: center; 
+  align-items: center;    
+  margin: 0;
+}
+.emergency-section {
+  padding: 0;
+  margin: 0;
+}
+.wrapper-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px; 
 }
 @media (max-width: 768px) {
   .announcement-container {
     flex-direction: column;
     align-items: center;
   }
-  .announcement-box {
-    white-space: normal;
-    text-align: center;
-    width: 100%;
-    box-sizing: border-box;
-  }
+  
+  .announcement-text,
   .news_frame {
-    padding: 0;
+    width: 100% !important;      /* Забезпечує повну ширину */
+    max-width: 600px;            /* Максимальна ширина для гарного вигляду */
+    display: block !important;   /* Забираємо flex */
+    margin: 0 auto 20px auto;    /* Центруємо і додаємо відступ знизу */
+    justify-content: unset !important; /* Прибираємо центровання flex */
+    align-items: unset !important;
   }
+  
   .fb-wrapper {
-    height: 500px; /* або більше, якщо потрібно */
+    width: 100%;
+    height: 500px;
+    position: relative;
   }
+  
   .fb-wrapper iframe {
     width: 100% !important;
     height: 100% !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
   }
 }
-    /* Контейнер для центрування кнопки по вертикалі і горизонталі */
-    .center-wrapper {
-      height: 100vh; /* повна висота вікна */
-      display: flex;
-      justify-content: center; /* по горизонталі */
-      align-items: center;     /* по вертикалі */
-      background: #f0f4f8;     /* світлий фон */
-      margin: 0;
-    }
-    .emergency-section {
-    padding: 0;
-    margin: 0;
-  }
-
-  /* Центрування */
-  .wrapper-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px; /* можна зменшити або адаптувати під потреби */
-  }
-
-  /* Кнопка */
+/* Кнопка */
+.emergency-button {
+  background-color: rgba(70, 130, 180, 0.7);
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  font-size: 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(70, 130, 180, 0.3);
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 240px;
+}
+.emergency-button:hover {
+  background-color: rgba(70, 130, 180, 0.9);
+}
+@media (max-width: 480px) {
   .emergency-button {
-    background-color: rgba(70, 130, 180, 0.7);
-    color: white;
+    font-size: 1.2rem;
+    padding: 16px 30px;
+    min-width: 180px;
+  }
+}
+.announcement-content-wrapper {
+  position: relative; /* для фонового псевдоелемента */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 340px; /* ширина як у news_frame */
+  padding: 20px;
+  background: #f9fbff;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 64, 128, 0.12);
+  overflow: visible;
+  z-index: 1;
+}
+
+/* Фон за фото — псевдоелемент */
+.announcement-content-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120%;
+  height: 180px;
+  background: linear-gradient(135deg, #007BFFcc, #004080cc);
+  border-radius: 20px;
+  filter: blur(40px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.announcement-image {
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 64, 128, 0.3);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.announcement-image:hover {
+  transform: scale(1.05);
+}
+
+.emergency-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 18px 40px;
+  font-size: 1.3rem;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 16px rgba(0, 123, 255, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 240px;
+  font-weight: 600;
+}
+
+.emergency-button:hover {
+  background-color: #0056b3;
+  box-shadow: 0 10px 24px rgba(0, 86, 179, 0.7);
+}
+
+@media (max-width: 480px) {
+  .announcement-content-wrapper {
+    max-width: 95vw; /* трохи ширше, але ближче до краю */
+    padding: 10px 8px; /* менші відступи */
+    gap: 12px; /* зменшений відступ між елементами */
+  }
+  
+  .announcement-content-wrapper::before {
+    height: 120px;
+    width: 130%;
+    top: 6px;
+  }
+
+  .emergency-button {
+    min-width: auto;
+    width: 100%;
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+
+  .announcement-image:hover {
+    transform: none; /* без масштабування на мобільних */
+  }
+
+  /* Нові стилі для Facebook */
+  .news_frame {
+    padding: 5px 0; /* зменшений падінг */
+    width: 100%;
+  }
+
+  .fb-wrapper {
+    height: 400px; /* зменшена висота для мобільних */
+  }
+
+  .fb-wrapper iframe {
+    position: relative; /* зняв абсолютне позиціювання для коректного розміщення */
+    height: 400px !important;
+    width: 100% !important;
     border: none;
-    padding: 20px 40px;
-    font-size: 1.5rem;
-    border-radius: 12px;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(70, 130, 180, 0.3);
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-    min-width: 240px;
   }
-
-  .emergency-button:hover {
-    background-color: rgba(70, 130, 180, 0.9);
-  }
-
-  @media (max-width: 480px) {
-    .emergency-button {
-      font-size: 1.2rem;
-      padding: 16px 30px;
-      min-width: 180px;
-    }
-  }
+}
 /*основний надпис*/
 .jumbotron {
   background-image: url(https://vandrivka.com.ua/wp-content/uploads/2021/06/Buchanskij-miskij-park-6.jpg);
@@ -304,72 +412,208 @@ ul {
     min-height: auto;
   }
 }
-/*місія*/
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
+/*блок*/
+.ujk-banner {
+  background: linear-gradient(135deg, #2b87d1, #67c6f5);
+  padding: 50px 20px;
+  color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
 }
 
+.ujk-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.ujk-text {
+  max-width: 550px;
+  flex: 1 1 300px;
+}
+
+.ujk-text h2 {
+  font-size: 32px;
+  line-height: 1.2;
+  font-weight: 700;
+  margin: 0 0 15px;
+}
+
+.ujk-text h2 span {
+  color: #ffe066;
+}
+
+.ujk-text p {
+  font-size: 15px;
+  margin: 0 0 25px;
+  line-height: 1.5;
+}
+
+.ujk-btn {
+  background-color: #ffe066;
+  color: #000;
+  padding: 12px 26px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.ujk-btn:hover {
+  background-color: #ffd23f;
+}
+
+.ujk-image {
+  flex: 1 1 300px;
+  text-align: center;
+}
+
+.ujk-image img {
+  max-width: 60%;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+/* Початковий стан */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Коли елемент видно */
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Планшети */
+@media (max-width: 991px) {
+  .ujk-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  .ujk-text h2 {
+    font-size: 28px;
+  }
+
+  .ujk-text p {
+    font-size: 14px;
+  }
+}
+
+/* Телефони */
+@media (max-width: 600px) {
+  .ujk-banner {
+    padding: 40px 15px;
+  }
+
+  .ujk-text h2 {
+    font-size: 24px;
+  }
+
+  .ujk-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+/* Анімація появи */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
+}
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Основний блок місії */
+/* Основна секція */
 .mission-section {
-  padding: 20px;
+  background: linear-gradient(135deg, #e6f2ff, #f0f9ff);
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
 }
-/* Контейнер контенту */
+
+/* Контейнер */
 .mission-container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 40px;
   flex-wrap: wrap;
 }
-/* Текстова частина */
+
+/* Текст */
 .mission-content {
-  max-width: 500px;
-  flex: 1 1 300px;
+  flex: 1 1 480px;
+  max-width: 600px;
 }
+
 /* Заголовок */
 .mission-header {
-  text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .mission-header h1 {
-  font-size: 25px;
-  letter-spacing: 1.5px;
-  padding: 8px 18px;
-  color: #004080;
-  border-radius: 6px;
+  font-size: 32px;
+  letter-spacing: 1.2px;
+  color: #003566;
+  position: relative;
   display: inline-block;
 }
+.mission-header h1::after {
+  content: '';
+  display: block;
+  width: 60%;
+  height: 3px;
+  background: #0077b6;
+  margin-top: 8px;
+  border-radius: 4px;
+}
+
 /* Опис */
 .mission-description {
-  font-size: 18px !important;
-  font-weight: 600;
-  color: #004080;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #003566;
+  font-size: 17px;
+  line-height: 1.6;
+  padding: 18px 24px;
   border-left: 5px solid #0077b6;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  font-weight: 500;
 }
+
 /* Зображення */
 .mission-image {
-  max-width: 500px;
-  flex: 1 1 300px;
-  overflow: hidden;
+  flex: 1 1 400px;
+  max-width: 550px;
 }
 .mission-img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
-/* Адаптивність */
+
+/* Адаптація */
+@media (max-width: 1024px) {
+  .mission-header h1 {
+    font-size: 28px;
+  }
+  .mission-description {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .mission-container {
     flex-direction: column;
@@ -379,13 +623,22 @@ ul {
   .mission-image {
     max-width: 90%;
   }
-  .mission-header h1 {
-    font-size: 22px;
-  }
-  .mission-description {
-    font-size: 18px;
+  .mission-header h1::after {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
+@media (max-width: 480px) {
+  .mission-header h1 {
+    font-size: 24px;
+  }
+  .mission-description {
+    font-size: 15px;
+    padding: 14px 20px;
+  }
+}
+
 /*стрілка наверх*/
 /* ScrollToTop button */
 .scrollToTop{ 

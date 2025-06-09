@@ -40,19 +40,19 @@
 	<section class="section_site">
 <div class="announcement-section">
   <div class="announcement-container">
-    
     <div class="announcement-text">
-      <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-        <div class="announcement-box">
-          📰 Оголошення
-        </div>
+      <div class="announcement-content-wrapper">
+        <img 
+          src="images/temporary.png" 
+          alt="Оголошення" 
+          class="announcement-image"
+        />
         <a href="https://forms.gle/Ys4yKodXmm3a9gfz6" class="emergency-button">Заповнити аварійну заявку</a>
       </div>
     </div>
-    
     <div class="news_frame">
       <div class="fb-wrapper">
-        <iframe 
+           <iframe 
           src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61576783481148%26locale%3Dru_RU&tabs=timeline&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false"
           scrolling="no" frameborder="0" allowfullscreen="true"
           allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
@@ -61,7 +61,7 @@
     </div>
   </div>
 </div>
-    <section class="mission-section">
+    <section class="mission-section fade-in">
       <div class="mission-container">
         <div class="mission-content">
           <div class="mission-header">
@@ -75,7 +75,19 @@
           <img src="images/team.jpg" alt="Місія компанії" class="mission-img" />
         </div>
       </div>
-    </section>       
+    </section> 
+    <section class="ujk-banner animate-on-scroll">
+  <div class="ujk-content">
+    <div class="ujk-text">
+      <h2>Новий етап<span><br>обслуговування ваших будинків</span></h2>
+      <p>Ми дбаємо про комфорт і безпеку кожного мешканця. Якість сервісу — наш головний пріоритет.</p>
+      <a href="#about" class="ujk-btn">Дізнатись більше</a>
+    </div>
+    <div class="ujk-image">
+      <img src="images/bg2.jpg" alt="Фото житлового комплексу">
+    </div>
+  </div>
+</section>      
         <div class="name_service">
             <h2><b>Наші ключові напрямки роботи:</b></h2>
         </div>
@@ -407,5 +419,22 @@
         </div>
     </footer>  
     <a class="scrollToTop" onclick="jQuery('html,body').animate({scrollTop:0}, 'slow');"><span class="fa fa-chevron-up"></span></a>
+    <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const scrollElements = document.querySelectorAll(".animate-on-scroll");
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    scrollElements.forEach(el => observer.observe(el));
+  });
+</script>
 </body>
 </html>

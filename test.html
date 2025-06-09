@@ -1,214 +1,214 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <title>Останні новини – Укр Житло Сервіс</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ЖК Каскад | L-KASKAD</title>
   <style>
+    :root {
+      --blue: #0066cc;
+      --dark: #1a1a1a;
+      --light: #f5f5f5;
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      margin: 0;
-      padding: 25px;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background: var(--light);
+      color: var(--dark);
+      scroll-behavior: smooth;
+    }
+    header {
+      background: var(--blue);
+      color: white;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
       display: flex;
-      justify-content: center;
-    }
-
-    .wrapper-news {
-      max-width: 960px;
-      width: 100%;
-      background-color: #ffffff;
-      padding: 30px 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
-
-    .news-title {
-      text-align: center;
-      color: #003366;
-      font-weight: 800;
-      font-size: 2.4rem;
-      margin-bottom: 35px;
-      font-family: 'Arial Black', Arial, sans-serif;
-    }
-
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 22px;
-    }
-
-    .news-card {
-      background: #d9e9fb;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease;
-    }
-
-    .news-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
-    }
-
-    .news-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .news-content {
-      padding: 16px 18px;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
       justify-content: space-between;
+      align-items: center;
     }
-
-    .news-headline {
-      font-size: 1.15rem;
-      color: #002244;
-      margin: 0 0 10px 0;
-      line-height: 1.3;
-      font-weight: 700;
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
     }
-
-    .news-date {
-      font-size: 0.87rem;
-      color: #444;
+    .hero {
+      height: 90vh;
+      background: url('https://source.unsplash.com/1600x900/?building') no-repeat center/cover;
       display: flex;
       align-items: center;
-      gap: 7px;
-      margin-bottom: 18px;
-    }
-
-    .btn-readmore {
-      background-color: #005bbb;
-      color: #fff;
-      padding: 9px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
+      justify-content: center;
       text-align: center;
-      transition: background-color 0.25s ease;
-      user-select: none;
+      color: white;
     }
-
-    .btn-readmore:hover {
-      background-color: #003d7a;
+    .hero h1 {
+      font-size: 3rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1rem 2rem;
+      border-radius: 10px;
     }
-
-    /* Мобільна адаптивність */
-    @media (max-width: 480px) {
-      body {
-        padding: 15px 10px;
-      }
-
-      .wrapper-news {
-        padding: 20px 15px;
-      }
-
-      .news-title {
-        font-size: 1.8rem;
-        margin-bottom: 25px;
-      }
-
-      .btn-readmore {
-        width: 100%;
-        padding: 12px 0;
-        font-size: 1rem;
-      }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .services, .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--blue);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #004c99;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px; right: 10px;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-  <section class="wrapper-news">
-    <h1 class="news-title">Останні новини</h1>
-    <div id="news-container" class="news-grid"></div>
+
+  <header>
+    <div><strong>L-KASKAD</strong></div>
+    <nav>
+      <a href="#about">Про нас</a>
+      <a href="#services">Послуги</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#contact">Контакти</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <h1>Житловий комплекс вашої мрії</h1>
+  </div>
+
+  <section id="about">
+    <h2>Про нас</h2>
+    <p>Компанія L-KASKAD — забудовник із досвідом понад 15 років. Ми створюємо сучасні, комфортні та енергоефективні житлові комплекси в серці міста.</p>
+    <a href="#contact" class="btn">Зв'язатися з нами</a>
   </section>
 
+  <section id="services">
+    <h2>Наші послуги</h2>
+    <div class="services">
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?architecture" alt="service">
+        <h3>Проектування</h3>
+        <p>Сучасні архітектурні рішення від найкращих спеціалістів</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?construction" alt="service">
+        <h3>Будівництво</h3>
+        <p>Надійність, швидкість і контроль на всіх етапах</p>
+      </div>
+      <div class="card">
+        <img src="https://source.unsplash.com/400x300/?interior" alt="service">
+        <h3>Дизайн</h3>
+        <p>Індивідуальний підхід до кожного інтер'єру</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <h2>Галерея</h2>
+    <div class="gallery">
+      <img src="https://source.unsplash.com/400x300/?apartment" class="card" alt="gallery">
+      <img src="https://source.unsplash.com/401x300/?building" class="card" alt="gallery">
+      <img src="https://source.unsplash.com/402x300/?city" class="card" alt="gallery">
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Контакти</h2>
+    <p>Залиште заявку, і ми зв'яжемось з вами</p>
+    <button class="btn" onclick="openModal()">Залишити заявку</button>
+  </section>
+
+  <footer>
+    &copy; 2025 ЖК Каскад. Всі права захищені.
+  </footer>
+
+  <!-- Модальне вікно -->
+  <div class="modal" id="contactModal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2>Заявка</h2>
+      <p>Дякуємо! Ми з вами зв’яжемося найближчим часом.</p>
+    </div>
+  </div>
+
   <script>
-    const newsItems = [
-      {
-        img: "images/n4.jpg",
-        title: "Початок обслуговування ЖК \"На Прорізній\"",
-        date: "13.07.2024",
-        link: "#link"
-      },
-      {
-        img: "images/p1.png",
-        title: "Монтаж систем освітлення",
-        date: "30.10.2022",
-        link: "#link"
-      },
-      {
-        img: "images/p2.png",
-        title: "Заміна та ремонт електропроводки",
-        date: "19.12.2023",
-        link: "#link"
-      },
-      {
-        img: "images/p3.png",
-        title: "Прокладка електрокабелю",
-        date: "24.12.2023",
-        link: "#link"
-      },
-      {
-        img: "images/p4.png",
-        title: "Прокладка труб опалення",
-        date: "29.12.2023",
-        link: "#link"
-      },
-      {
-        img: "images/n1.jpg",
-        title: "Екскурсія на Bayer",
-        date: "30.12.2023",
-        link: "#link"
-      },
-      {
-        img: "images/n2.jpg",
-        title: "Зустріч з представниками Бучанської міської ради",
-        date: "09.03.2024",
-        link: "#link"
-      },
-      {
-        img: "images/n3.jpg",
-        title: "Відновлення будинків ЖК \"Буча Квартал\"",
-        date: "15.12.2024",
-        link: "#link"
-      }
-    ];
-
-    function renderNews(count = 3) {
-      const container = document.getElementById('news-container');
-      container.innerHTML = '';
-
-      newsItems.slice(0, count).forEach(item => {
-        const card = document.createElement('article');
-        card.className = 'news-card';
-
-        card.innerHTML = `
-          <div class="news-image">
-            <img src="${item.img}" alt="${item.title}" />
-          </div>
-          <div class="news-content">
-            <h2 class="news-headline">${item.title}</h2>
-            <div class="news-date"><i class="fa fa-clock-o"></i> ${item.date}</div>
-            <a href="${item.link}" class="btn-readmore" tabindex="0">Детальніше</a>
-          </div>
-        `;
-
-        container.appendChild(card);
-      });
+    function openModal() {
+      document.getElementById('contactModal').style.display = 'flex';
     }
-
-    window.addEventListener('DOMContentLoaded', () => renderNews(3));
+    function closeModal() {
+      document.getElementById('contactModal').style.display = 'none';
+    }
+    window.onclick = function(event) {
+      const modal = document.getElementById('contactModal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
   </script>
 </body>
 </html>
