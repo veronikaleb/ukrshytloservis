@@ -14,6 +14,7 @@ body {
     font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 a {
   text-decoration: none;
@@ -21,6 +22,18 @@ a {
 ul {
   list-style: none;
 }
+main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+main > * {
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+
 /* Header */
 @import url('https://fonts.googleapis.com/css?family=Arimo');
 .top-menu {
@@ -259,8 +272,6 @@ ul {
   overflow: visible;
   z-index: 1;
 }
-
-/* Фон за фото — псевдоелемент */
 .announcement-content-wrapper::before {
   content: "";
   position: absolute;
@@ -275,7 +286,6 @@ ul {
   z-index: -1;
   pointer-events: none;
 }
-
 .announcement-image {
   width: 100%;
   border-radius: 14px;
@@ -283,11 +293,9 @@ ul {
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-
 .announcement-image:hover {
   transform: scale(1.05);
 }
-
 .emergency-button {
   background-color: #007BFF;
   color: white;
@@ -772,6 +780,7 @@ background:#555;
     text-align: left;
   }
 }
+/*основні блоки*/
 .section_site {
   background: linear-gradient(135deg, #cce7ff, #e6f3ff);
   text-align: center;
@@ -1260,20 +1269,15 @@ button {
   margin: 0 auto;
   bottom: -1rem;
 }
-
-/* ===== АДАПТАЦІЯ ДЛЯ ПРИСТРОЇВ ===== */
-
 @media (max-width: 768px) {
   .card-col {
     width: calc(50% - 2rem);
   }
-
   .flip-front,
   .flip-back {
     min-height: 240px;
     font-size: 1.2rem;
   }
-
   .flip-front .flip-inner p {
     font-size: 1.4rem;
     margin-bottom: 1.5rem;
@@ -1285,28 +1289,23 @@ button {
     width: 100%;
     margin: 1rem 0;
   }
-
   .flip-front,
   .flip-back {
     min-height: 200px;
     font-size: 1rem;
   }
-
   .flip-inner {
     padding: 1.5rem;
   }
-
   .flip-front .flip-inner p {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
-
   .flip-front .flip-inner p::after {
     width: 3rem;
     bottom: -0.8rem;
   }
 }
-
 .footer-bottom {
   font-size: 16px; /* Slightly increased font size */
   padding-top: 15px; /* Added some space above */
@@ -1395,22 +1394,15 @@ button {
 @media (min-width: 800px) {
   .accordion__item,
   .accordion__header {
-    width: 800px;
+    width: 1200px;
   }
 }
-
-/* Стилі для мобільних пристроїв */
 @media (max-width: 799px) {
   .accordion__item,
   .accordion__header {
     width: 100%;
   }
 }
-.accordion_list{
-	font-size: 25px;
-	padding: 10px;
-}
-
 /* Загальні стилі для секції обслуговування */
 .service-section {
   background: linear-gradient(to right, #3b79c0, #2d67b5);
@@ -2325,7 +2317,6 @@ table td:last-child {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .team-member {
   display: flex;
   flex-direction: column;
@@ -2335,19 +2326,17 @@ table td:last-child {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
-
 .team-member img {
   width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 8px;
+  height: 350px; /* або будь-яка інша висота, яку хочеш */
+  object-fit: cover; /* обрізає зображення, не розтягує */
+  border-radius: 12px; /* опціонально — для краси */
+  display: block;
 }
-
 .team-member p {
   font-size: 16px;
   color: #666;
 }
-
 /* Адаптація */
 @media (max-width: 900px) {
   .team-grid {
