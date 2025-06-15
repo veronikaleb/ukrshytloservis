@@ -139,7 +139,6 @@ main > * {
     padding: 2.5rem 1rem;
   }
 }
-
 @media (max-width: 768px) {
   .mission-section,
   .advantages,
@@ -161,7 +160,7 @@ main > * {
 .hero-banner {
   position: relative;
   height: 45vh;
-  background: url('https://grandbourget.com/wp-content/themes/grand-byrze/assets/images/home-slider/2.jpg') center/cover no-repeat;
+  background: url('../images/g1.jpg') center/cover no-repeat;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -293,7 +292,6 @@ main > * {
   transform: translateY(-50%);
   animation-delay: 3.1s;
 }
-
 .triangle.top-right {
   top: 20px;
   right: 20px;
@@ -547,20 +545,17 @@ main > * {
     padding: 10px 8px; /* менші відступи */
     gap: 12px; /* зменшений відступ між елементами */
   }
-  
   .announcement-content-wrapper::before {
     height: 120px;
     width: 130%;
     top: 6px;
   }
-
   .emergency-button {
     min-width: auto;
     width: 100%;
     font-size: 1rem;
     padding: 12px 16px;
   }
-
   .announcement-image:hover {
     transform: none; /* без масштабування на мобільних */
   }
@@ -570,11 +565,9 @@ main > * {
     padding: 5px 0; /* зменшений падінг */
     width: 100%;
   }
-
   .fb-wrapper {
     height: 400px; /* зменшена висота для мобільних */
   }
-
   .fb-wrapper iframe {
     position: relative; /* зняв абсолютне позиціювання для коректного розміщення */
     height: 400px !important;
@@ -590,7 +583,6 @@ main > * {
   font-family: 'Segoe UI', sans-serif;
   overflow: hidden;
 }
-
 .ujk-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -600,12 +592,10 @@ main > * {
   flex-wrap: wrap;
   gap: 20px;
 }
-
 .ujk-text {
   max-width: 550px;
   flex: 1 1 300px;
 }
-
 .ujk-text h2 {
   font-size: 32px;
   line-height: 1.2;
@@ -619,7 +609,7 @@ main > * {
 }
 .ujk-btn {
   background: linear-gradient(90deg, #7BB8E3, #4B9CD3, #2D75B2);
-  color: #000;
+  color: #ffffff;
   padding: 12px 26px;
   border-radius: 6px;
   text-decoration: none;
@@ -634,7 +624,7 @@ main > * {
   text-align: center;
 }
 .ujk-image img {
-  max-width: 60%;
+  max-width: 80%;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -736,7 +726,7 @@ main > * {
   max-width: 550px;
 }
 .mission-img {
-  width: 100%;
+  width: 90%;
   height: auto;
   border-radius: 12px;
   object-fit: cover;
