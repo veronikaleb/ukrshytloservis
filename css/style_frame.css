@@ -6,14 +6,12 @@ body {
   color: #224C98;
   box-sizing: border-box;
 }
-
 .content-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 10px;
   width: 100%;
 }
-
 .service-header {
   text-align: center;
   padding: 30px 10px 20px;
@@ -22,12 +20,10 @@ body {
   border-radius: 0 0 30px 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-
 .service-header h1 {
   margin: 0;
   font-size: 28px;
 }
-
 .service-description {
   font-size: 16px;
   line-height: 1.6;
@@ -38,23 +34,18 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.05);
   margin-top: 25px;
 }
-
 .service-description p {
   margin-bottom: 12px;
 }
-
-/* Галерея - мобільна версія: вертикальний список */
-
 .gallery-container {
   position: relative;
   max-width: 100%;
   margin: 20px auto;
   overflow: hidden;
 }
-
 .gallery {
   display: flex;
-  flex-direction: column;  /* вертикальний стовпець для мобільних */
+  flex-direction: column;
   gap: 12px;
   padding: 0;
   scroll-behavior: smooth;
@@ -63,9 +54,8 @@ body {
   max-height: 70vh;
   -webkit-overflow-scrolling: touch;
 }
-
 .gallery img {
-  width: 100%; /* максимально по ширині контейнера */
+  width: 100%; 
   height: auto;
   border-radius: 10px;
   object-fit: cover;
@@ -74,17 +64,12 @@ body {
   flex-shrink: 0;
   max-height: 200px;
 }
-
 .gallery img:hover {
   transform: scale(1.02);
 }
-
 .arrow {
-  display: none; /* приховуємо стрілки на мобільних */
+  display: none; 
 }
-
-/* Modal */
-
 .modal {
   display: none;
   position: fixed;
@@ -98,7 +83,6 @@ body {
   padding: 10px;
   box-sizing: border-box;
 }
-
 .modal img {
   max-width: 95%;
   max-height: 85%;
@@ -106,7 +90,6 @@ body {
   user-select: none;
   touch-action: none;
 }
-
 .modal-close {
   position: absolute;
   top: 20px;
@@ -117,23 +100,17 @@ body {
   user-select: none;
   z-index: 110;
 }
-
-/* Для більших екранів — змінюємо галерею на горизонтальний скрол з стрілками */
-
 @media (min-width: 601px) {
   body {
     padding: 0;
   }
-
   .service-header h1 {
     font-size: 36px;
   }
-
   .service-description {
     font-size: 18px;
     padding: 25px;
   }
-
   .gallery {
     flex-direction: row; /* горизонтальний ряд */
     overflow-x: auto;
@@ -142,13 +119,11 @@ body {
     padding: 10px;
     gap: 12px;
   }
-
   .gallery img {
     width: 350px;
     height: 260px;
     max-height: none;
   }
-
   .arrow {
     display: block;
     position: absolute;
@@ -165,18 +140,13 @@ body {
     user-select: none;
     box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
-
   .arrow.left {
     left: 10px;
   }
-
   .arrow.right {
     right: 10px;
   }
 }
-
-/* Для дуже великих екранів */
-
 @media (min-width: 1201px) {
   .gallery {
     max-width: 1500px;
