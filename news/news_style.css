@@ -1,0 +1,269 @@
+.news-block {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 10px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 75, 173, 0.15);
+  padding: 30px 24px;
+  text-align: center; /* Центруємо весь контент */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #00264d;
+}
+
+.news-image {
+  max-width: 70% !important;
+  height: auto;
+  border-radius: 12px;
+  margin: 0 auto 14px; /* Відступ знизу */
+  display: block; /* Для центрування через margin auto */
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.2);
+}
+
+.news-title {
+  font-size: 40px;
+  margin: 0 0 20px;
+  font-weight: 700;
+  color: #004aad;
+  letter-spacing: 1px;
+  line-height: 1.1;
+}
+
+.news-text {
+  font-size: 19px;
+  line-height: 1.6;
+  max-width: 1000px;
+  margin: 0 auto;
+  color: #00264d;
+}
+
+.news-text p {
+  margin-bottom: 1em;
+}
+
+/* Breadcrumb (де знаходимося) */
+.breadcrumb {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 20px;
+  margin: 20px 0;
+  user-select: none;
+  margin-left: 140px;
+}
+
+.breadcrumb ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: #004aad;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+/* Стрілка між пунктами */
+.breadcrumb li + li::before {
+  content: "›";
+  color: #7a9cd6;
+  margin: 0 8px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.breadcrumb a {
+  color: #004aad;
+  text-decoration: none;
+  transition: color 0.25s ease;
+  font-weight: 600;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: #002f7a;
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: #7a9cd6;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* Адаптив для маленьких екранів */
+@media (max-width: 480px) {
+  .news-title {
+    font-size: 32px;
+  }
+  .news-text {
+    font-size: 16px;
+  }
+  .breadcrumb {
+    font-size: 12px;
+    margin-left: 10px;
+  }
+  .breadcrumb li + li::before {
+    margin: 0 5px;
+    font-size: 14px;
+  }
+}
+
+/* Новина 2 — електрика */
+.news-block.electric-news {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #f3f6fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 64, 128, 0.15);
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  color: #002e5d;
+}
+
+.news-block.electric-news .news-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-bottom: 3px solid #004080;
+  border-radius: 12px 12px 0 0;
+}
+
+.news-block.electric-news .news-content {
+  padding: 30px 24px;
+}
+
+.news-block.electric-news .news-title {
+  font-size: 33px;
+  margin-bottom: 22px;
+  font-weight: 700;
+}
+
+.news-block.electric-news .news-text p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .news-block.electric-news {
+    flex-direction: row;
+  }
+  .news-block.electric-news .news-image {
+    width: 45%;
+    border-bottom: none;
+    border-right: 3px solid #004080;
+    max-height: none;
+    border-radius: 12px 0 0 12px;
+  }
+  .news-block.electric-news .news-content {
+    width: 55%;
+    padding: 36px 30px;
+  }
+}
+
+/* Новина сантехніка */
+.news-block.plumbing-news {
+  max-width: 1200px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(191, 151, 91, 0.15);
+  display: flex;
+  flex-direction: column-reverse;
+  font-family: Arial, sans-serif;
+  color: #5a4a25;
+}
+
+.news-block.plumbing-news .news-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-top: 3px solid #bf975b;
+  border-radius: 0 0 12px 12px;
+}
+
+.news-block.plumbing-news .news-title {
+  font-size: 36px;
+  margin-bottom: 22px;
+  font-weight: 700;
+}
+
+.news-block.plumbing-news .news-text p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 768px) {
+  .news-block.plumbing-news {
+    flex-direction: row;
+  }
+  .news-block.plumbing-news .news-content {
+    width: 55%;
+    padding: 36px 30px;
+  }
+  .news-block.plumbing-news .news-image {
+    width: 45%;
+    max-height: none;
+    border-top: none;
+    border-left: 3px solid #bf975b;
+    border-radius: 12px 0 0 12px;
+  }
+}
+
+/* Новина ОСББ */
+.news-block.osbb-news {
+  margin: 40px auto;
+  background: #eaf2f8;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(33, 103, 185, 0.2);
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #1b2a47;
+}
+
+.news-block.osbb-news .news-image {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-bottom: 4px solid #2167b9;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.news-block.osbb-news .news-content {
+  padding: 32px 28px;
+}
+
+.news-block.osbb-news .news-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 26px;
+}
+
+.news-block.osbb-news .news-text p {
+  font-size: 17px;
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+
+@media (min-width: 768px) {
+  .news-block.osbb-news {
+    flex-direction: row;
+  }
+  .news-block.osbb-news .news-image {
+    width: 45%;
+    max-height: none;
+    border-radius: 12px 0 0 12px;
+    border-bottom: none;
+    border-right: 4px solid #2167b9;
+  }
+  .news-block.osbb-news .news-content {
+    width: 55%;
+    padding: 40px 36px;
+  }
+}
