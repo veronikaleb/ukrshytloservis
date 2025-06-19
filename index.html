@@ -18,6 +18,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="JS/jquery-ui.min.js"></script>
   <script src="JS/mylibs1.js"></script>
+  <script src="JS/renderNews.js"></script>
 </head>
 <body>
 <nav class="top-menu">
@@ -143,7 +144,7 @@
               </div>
               <div class="card-col" ontouchstart="this.classList.toggle('card-hover');">
                 <div class="flip-box">
-                  <div class="flip-front" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy964paHe2JLfpgEWFJ87Z1bVwUn2L7y-1UV3f-_KhWQ&s&ec=72940545)">
+                  <div class="flip-front" style="background-image: url(./images/b1.png)">
                     <div class="flip-inner">
                       <p class="flip-text">Диспетчерська служба</p>
                     </div>
@@ -171,7 +172,7 @@
               </div>
               <div class="card-col" ontouchstart="this.classList.toggle('card-hover');">
                 <div class="flip-box">
-                  <div class="flip-front" style="background-image: url(https://i0.wp.com/rbtautomate.com/wp-content/uploads/2023/02/Benefits-of-Commercial-Electrical-Services-for-Businesses--scaled.jpg?fit=2560%2C1707&ssl=1)">
+                  <div class="flip-front" style="background-image: url(./images/electricity/e2.jpg)">
                     <div class="flip-inner">
                       <p class="flip-text">Електрика</p>
                     </div>
@@ -213,7 +214,7 @@
               </div>
               <div class="card-col" ontouchstart="this.classList.toggle('card-hover');">
                 <div class="flip-box">
-                  <div class="flip-front" style="background-image: url(https://cdn.shopify.com/s/files/1/0403/8760/8730/files/safety-training_2048x2048.png?v=1682080908)">
+                  <div class="flip-front" style="background-image: url(./images/b3.png)">
                     <div class="flip-inner">
                       <p class="flip-text">Аварійна служба</p>
                     </div>
@@ -227,7 +228,7 @@
               </div>
               <div class="card-col" ontouchstart="this.classList.toggle('card-hover');">
                 <div class="flip-box">
-                  <div class="flip-front" style="background-image: url(https://alefstroi.ua/uploads/admin/ap_29.jpg)">
+                  <div class="flip-front" style="background-image: url(./images/b2.png)">
                     <div class="flip-inner">
                       <p class="flip-text">Монтажні роботи</p>
                     </div>
@@ -334,9 +335,9 @@
     </div><br>
     <section class="news-background animate-on-scroll">
   <section class="wrapper-news">
-         <div class="name_service">
-              <h2><b>Новини</b></h2>
-         </div>
+    <div class="name_service">
+      <h2><b>Новини</b></h2>
+    </div>
     <div id="news-container" class="news-grid"></div>
   </section>
    <div class="diamond top-right" aria-hidden="true"></div>
@@ -469,24 +470,22 @@
         <div class="footer-bottom">
            Розробник: Вероніка Лебедовська
         </div>
-    </footer>  
+  </footer>  
     <a class="scrollToTop" onclick="jQuery('html,body').animate({scrollTop:0}, 'slow');"><span class="fa fa-chevron-up"></span></a>
-    <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const scrollElements = document.querySelectorAll(".animate-on-scroll");
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
+   <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const scrollElements = document.querySelectorAll(".animate-on-scroll");
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, {
+          threshold: 0.2
+        });
+        scrollElements.forEach(el => observer.observe(el));
       });
-    }, {
-      threshold: 0.2
-    });
-
-    scrollElements.forEach(el => observer.observe(el));
-  });
-</script>
+  </script>
 </body>
 </html>
