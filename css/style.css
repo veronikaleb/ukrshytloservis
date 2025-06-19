@@ -1326,18 +1326,36 @@ background:#555;
   .faq-inner {
     padding: 1rem;
   }
-  .faq-title{
+
+  .faq-title {
     font-size: 1.6rem;
   }
+
   .faq-question {
-    font-size: 1rem;
+    font-size: 15px;
     padding: 0.8rem 1rem;
   }
+
   .faq-answer {
     padding: 0 1rem;
   }
+
   .faq-answer.open {
-    padding: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .faq-answer p {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .faq-answer.open {
+    padding: 0.4rem 0.75rem;
+  }
+
+  .faq-answer p {
+    font-size: 12px !important;
   }
 }
 /*низ сайту*/
