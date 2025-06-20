@@ -91,6 +91,10 @@ main > * {
 }
 @media (max-width: 600px) {
 .menu-main li {display: block;}
+.navbar-logo{
+	 justify-content: center; 
+}
+
 }
 /* Гамбургер-кнопка */
 .menu-toggle {
