@@ -239,7 +239,6 @@ main > * {
   opacity: 0.75;
   animation-delay: 1.2s;
 }
-
 .diamond.middle-right {
   top: 50%;
   right: 30px;
@@ -249,7 +248,6 @@ main > * {
   transform: rotate(45deg) translateY(-50%);
   animation-delay: 2.4s;
 }
-
 .diamond.top-left {
   top: 20px;
   left: 100px;
@@ -448,7 +446,7 @@ main > * {
         rgba(0, 38, 90, 0.8),
         rgba(0, 55, 120, 0.6)
       );
-      color: #ffeb3b; 
+      color: #FFEA00; 
     }
     .info-footer {
       background: linear-gradient(
@@ -737,9 +735,6 @@ main > * {
   font-weight: 600;
   transition: background 0.3s;
 }
-.ujk-btn:hover {
-  background-color: #ffd23f;
-}
 .ujk-image {
   flex: 1 1 300px;
   text-align: center;
@@ -748,6 +743,11 @@ main > * {
   max-width: 80%;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+.yellow_text {
+  color: #FFEA00;
+  font-weight: 700;
+  text-shadow: 1.5px 1.5px 3px rgba(0, 0, 0, 0.3);
 }
 /* Початковий стан */
 .animate-on-scroll {
@@ -1704,6 +1704,75 @@ button {
   }
 }
 /*сервіси*/
+.smart-service-section {
+  padding: 20px 10px; 
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center; 
+}
+.smart-service-wrapper {
+  max-width: 900px; 
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px; 
+  box-sizing: border-box;
+}
+.smart-service-textbox {
+  flex: 1 1 400px; 
+  max-width: 450px;
+  text-align: justify;
+}
+.smart-service-textbox h2 {
+  font-size: 28px;
+  color: #1a2b48;
+  margin-bottom: 10px; 
+}
+.smart-service-textbox p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin: 0;
+}
+.smart-service-gallery {
+  flex: 1 1 400px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; 
+  justify-content: center;
+}
+.smart-service-gallery img {
+  width: 100%;
+  max-width: 260px; 
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.smart-service-gallery img:hover {
+  transform: scale(1.03);
+}
+@media (max-width: 768px) {
+  .smart-service-wrapper {
+    flex-direction: column;
+    gap: 25px; 
+  }
+  .smart-service-textbox h2 {
+    font-size: 22px;
+  }
+  .smart-service-textbox p {
+    font-size: 15px;
+  }
+  .smart-service-textbox,
+  .smart-service-gallery {
+    max-width: 100%;
+    flex: 1 1 auto;
+  }
+}
 .category-wrap {
   padding: 20px; 
   background: white;
@@ -1745,7 +1814,7 @@ button {
   transition: .3s linear;
 }
 .category-wrap a:hover {
-  background: #00BFFF;
+ background: linear-gradient(90deg, #7BB8E3, #4B9CD3, #2D75B2);
   color: white;
 }
 .iframe-container {
@@ -2404,7 +2473,6 @@ table td:last-child {
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   letter-spacing: 1px;
   font-weight: 700;
-  text-transform: uppercase;
 }
 .info-subtitle {
   font-weight: 700;

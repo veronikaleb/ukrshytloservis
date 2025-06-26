@@ -13,7 +13,6 @@
     <meta property="og:description" content="Професійне обслуговування житлових будинків у Бучі та Київській області.">
     <meta name="keywords" content="Укр Житло Сервіс, Буча, ЖКГ, аварійна служба, клінінг, сантехнік, електрик">
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="JS/jquery-3.3.1.min.js"></script>
     <script src="JS/jquery-ui.min.js"></script>
     <script src="JS/mylibs1.js"></script>
     <script type="module" src="JS/feedback.js"></script>
@@ -85,10 +84,7 @@
   <input type="text" id="name" placeholder="Ваше ім'я" required />
   <input type="email" id="email" placeholder="Ваш Email" required />
   <textarea id="message" placeholder="Ваше повідомлення" rows="5" required></textarea>
-
-  <!-- Google reCAPTCHA -->
   <div class="g-recaptcha" data-sitekey="6LeuVE4rAAAAADcDFg8fxgsFwZe3hF-2eRE2UgNB"></div>
-
   <button type="submit" id="submitBtn">Відправити</button>
   <div id="loadingSpinner" style="display:none;">⏳ Надсилання...</div>
 </form>
@@ -115,6 +111,6 @@
         <div class="footer-bottom">
            Розробник: Вероніка Лебедовська
         </div>
-        <a class="scrollToTop" onclick="jQuery('html,body').animate({scrollTop:0}, 'slow');"><span class="fa fa-chevron-up"></span></a>
+       <a href="#" class="scrollToTop"><span class="fa fa-chevron-up"></span></a>
 </body>
 </html>

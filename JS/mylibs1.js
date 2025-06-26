@@ -1,5 +1,3 @@
-// ===== News Rendering =====
-
 // ===== Accordion Class =====
 class ItcAccordion {
   constructor(target, config) {
@@ -22,7 +20,6 @@ class ItcAccordion {
       this.toggle(elHeader.parentElement);
     });
   }
-
   show(el) {
     const elBody = el.querySelector('.accordion__body');
     if (elBody.classList.contains('collapsing') || el.classList.contains('accordion__item_show')) return;
@@ -35,7 +32,6 @@ class ItcAccordion {
     el.classList.add('accordion__item_slidedown');
     elBody.offsetHeight;
     elBody.style.height = `${height}px`;
-
     window.setTimeout(() => {
       elBody.classList.remove('collapsing');
       el.classList.remove('accordion__item_slidedown');
@@ -60,7 +56,6 @@ class ItcAccordion {
     elBody.classList.remove('collapse');
     el.classList.remove('accordion__item_show');
     elBody.classList.add('collapsing');
-
     window.setTimeout(() => {
       elBody.classList.remove('collapsing');
       elBody.classList.add('collapse');
@@ -70,12 +65,10 @@ class ItcAccordion {
       elBody.style.overflow = '';
     }, this._config.duration);
   }
-
   toggle(el) {
     el.classList.contains('accordion__item_show') ? this.hide(el) : this.show(el);
   }
 }
-
 // ===== DOMContentLoaded Event =====
 document.addEventListener('DOMContentLoaded', () => {
   renderNews(3);
@@ -106,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
   // ===== Hamburger Menu =====
   const menuToggle = document.getElementById('menuToggle');
   const menu = document.querySelector('.menu-main');
@@ -154,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
-
   // ===== Init Accordion if present =====
   const accordion = document.querySelector('.accordion');
   if (accordion) {
