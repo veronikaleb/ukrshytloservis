@@ -90,12 +90,6 @@ window.addEventListener('DOMContentLoaded', () => {
         item.classList.add('visible');
       }
     });
-
-    if (window.pageYOffset > 300) {
-      scrollTopBtn.classList.add('show');
-    } else {
-      scrollTopBtn.classList.remove('show');
-    }
   }
 
   window.addEventListener('scroll', onScroll);
