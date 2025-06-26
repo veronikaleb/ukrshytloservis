@@ -6,7 +6,6 @@ class ItcAccordion {
     this._config = Object.assign(defaultConfig, config);
     this.addEventListener();
   }
-
   addEventListener() {
     this._el.addEventListener('click', (e) => {
       const elHeader = e.target.closest('.accordion__header');
@@ -43,7 +42,6 @@ class ItcAccordion {
       elBody.style.overflow = '';
     }, this._config.duration);
   }
-
   hide(el) {
     const elBody = el.querySelector('.accordion__body');
     if (elBody.classList.contains('collapsing') || !el.classList.contains('accordion__item_show')) return;
@@ -72,7 +70,6 @@ class ItcAccordion {
 // ===== DOMContentLoaded Event =====
 document.addEventListener('DOMContentLoaded', () => {
   renderNews(3);
-
   // ===== Modal Gallery =====
   const galleryImages = document.querySelectorAll('.image-container_diplomas img');
   const modal = document.getElementById('modal');
@@ -86,12 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         modal.classList.add('active');
       });
     });
-
     closeBtn.addEventListener('click', () => {
       modal.classList.remove('active');
       modalImage.src = '';
     });
-
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
         modal.classList.remove('active');
@@ -107,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
       menu.classList.toggle('active');
     });
   }
-
   // ===== Scroll Animation =====
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -116,10 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.2 });
-
   const animatedElements = document.querySelectorAll(".fade-in, .feature-item");
   animatedElements.forEach(el => observer.observe(el));
-
   // ===== Tabs =====
   window.openTab = function (evt, tab) {
     const tabcontent = document.getElementsByClassName("content__inner");
@@ -135,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById(tab).style.display = "block";
     evt.currentTarget.className += " active";
   };
-
   // ===== Horizontal Scroll on Tabs =====
   if (window.innerWidth > 800) {
     const scrollContainer = document.querySelector(".tabs");
@@ -153,7 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
       alwaysOpen: false
     });
   }
-
   // ===== FAQ Toggle =====
   const faqQuestions = document.querySelectorAll(".faq-question");
   faqQuestions.forEach(q => {
@@ -166,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
-
 // ===== Scroll To Top Button =====
 window.addEventListener('scroll', () => {
   const btn = document.querySelector('.scrollToTop');
