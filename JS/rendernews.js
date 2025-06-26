@@ -19,7 +19,7 @@ const newsItems = [
   }
 ];
 
-function renderNews(count = 3) {
+function rendernews(count = 3) {
   const container = document.getElementById('news-container');
   if (!container) return;
   container.innerHTML = '';
@@ -39,4 +39,4 @@ function renderNews(count = 3) {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => renderNews());
+document.addEventListener('DOMContentLoaded', () => rendernews());

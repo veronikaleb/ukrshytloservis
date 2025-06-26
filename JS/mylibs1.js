@@ -69,7 +69,6 @@ class ItcAccordion {
 }
 // ===== DOMContentLoaded Event =====
 document.addEventListener('DOMContentLoaded', () => {
-  renderNews(3);
   // ===== Modal Gallery =====
   const galleryImages = document.querySelectorAll('.image-container_diplomas img');
   const modal = document.getElementById('modal');
